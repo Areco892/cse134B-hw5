@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact Me</title>
+</head>
+
+<body>
+    <header>
+        <h1>Alexander Huang</h1>
+        <p>Table of Navigation</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="experiments.html">Experiments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <h2>Contact Me</h2>
+        <h3>Socials</h3>
+
+        <ol>
+            <li>Gmail</li>
+            <li>Linkedin</li>
+            <li><a href="https://github.com/Areco892">GitHub</a></li>
+        </ol>
+
+        <h3>Contact Form</h3>
+        <form>
+            <fieldset>
+
+                <legend>Personal or Work Related Question</legend>
+
+                <input type="radio" name="question-type" value="personal">
+                <label id="personal">Personal</label><br>
+
+                <input type="radio" name="question-type" value="work">
+                <label id="work">Work</label><br>
+
+                <label for="email">Email: </label>
+                <input type="email" id="email" required autofocus>
+
+                <label for="question">Question: </label>
+                <textarea id="question"></textarea>
+                <br>
+                <button>Submit</button>
+            </fieldset>
+            <dialog open>
+                <p>Thanks for visiting my site!</p>
+            </dialog>
+            <hello-world></hello-world>
+
+        </form>
+    </main>
+
+    <!--Script for Hello World tag-->
+    <script>
+        class HelloWorldElement extends HTMLElement {
+            connectedCallback() {
+                console.log("Hello world!");
+            }
+        }
+
+        customElements.define('hello-world', HelloWorldElement);
+    </script>
+</body>
+
+</html>

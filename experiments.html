@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Experiments</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Alexander Huang</h1>
+        <nav>
+            <p>Table of Navigation</p>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <h2>Experiments</h2>
+
+        <h3>Template</h3>
+        <template>
+            <p>WELCOME!</p>
+        </template>
+
+        <h3>Picture</h3>
+        <picture>
+            <source srcset="../img/sunset-400.jpg 400w,
+                            ../img/sunset-800.jpg 600w,
+                            ../img/sunset-1200.jpg 1600w
+                    " sizes="100vw" type="image/jpeg">
+            <img src="../img/sunset-400.jpg" alt="Image of a bridge with a beautiful warm sunset.">
+        </picture>
+
+        <h3>Audio</h3>
+        <audio controls>
+            <source src="../img/beach-waves.mp3" type="audio/mpeg">
+        </audio>
+
+        <h3>Video</h3>
+        <video width="800" controls>
+            <source src="../img/waterfall.mp4" type="video/mp4">
+        </video>
+
+        <h3>Canvas</h3>
+        <canvas width="300" height="150" style="border:1px solid black;"></canvas>
+
+    </main>
+
+    <footer>
+        <small>&copy; 2025 Made by Alexander Huang</small>
+    </footer>
+</body>
+
+</html>
