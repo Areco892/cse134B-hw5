@@ -5,51 +5,114 @@
     <meta charset="utf-8">
     <title>Alexander Huang - Portfolio</title>
     <link rel="stylesheet" href="main.css">
+    <style>
+        main {
+            margin: 7rem 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            section {
+                background: white;
+                padding: 2rem;
+                border: var(--border, 2px solid black);
+                border-radius: var(--border-radius, 10px);
+            }
+
+            .progress {
+                font-size: var(--p-font-size, 2.5vw);
+            }
+
+            .about-me {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                width: 80vw;
+
+                img {
+                    width: clamp(5rem, 10vw, 10rem);
+                    border-radius: var(--border-radius, 10px);
+                }
+
+                p {
+                    text-align: center;
+                    font-size: var(--p-font-size, 2vw);
+                }
+            }
+
+            h2 {
+                text-align: center;
+                font-size: var(--h2-font-size, 3vw);
+            }
+
+            .hobbies {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: space-evenly;
+                justify-content: center;
+                gap: 2rem;
+                border: none;
+                padding: 0;
+
+                article {
+                    display: flex;
+                    flex-direction: column;
+                    background: rgb(243, 243, 243);
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    border: var(--border);
+                    border-radius: var(--border-radius);
+                    padding: 2rem;
+                    width: clamp(25rem, 100vw, 40rem);
+
+                    h3 {
+                        font-size: var(--h3-font-size);
+                        padding: 1rem;
+                    }
+
+                    img {
+                        width: clamp(5rem, 50vw, 25rem);
+                        border-radius: var(--border-radius);
+                    }
+
+                    p {
+                        padding: 1rem;
+                        font-size: var(--p-font-size);
+                    }
+                }
+
+            }
+
+        }
+    </style>
 </head>
 
-<header>
-    <h1>Alexander Huang</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-<hr>
+<body>
+    <header>
+        <h1>Alexander Huang</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
 
-<main>
-    <section class="progress">
-        <p>Site Progress: <progress value="66" max="100"></progress></p>
-    </section>
+    <main>
+        <section class="progress">
+            <p>Site Progress: <progress value="66" max="100"></progress></p>
+        </section>
 
-    <section class="about-me">
-        <picture>
-            <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
-
-            <source srcset="../img/sunset-400.jpg 400w,
-                        ../img/sunset-800.jpg 800w,
-                        ../img/sunset-1200.jpg 1200w
-                      " sizes="(max-width: 400px) 400px,
-                               (max-width: 800px) 800px,
-                               1200px
-                      " type="image/jpeg">
-            <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
-        </picture>
-        <p>Hi! My name is <strong>Alexander Huang</strong> and here is a little about me! I am a
-            computer science student and I like cats! In my free time, I like to
-            play sports and learn new skills!
-        </p>
-    </section>
-
-    <h2>Hobbies</h2>
-
-    <section class="hobbies">
-
-        <article>
-            <h3>Play Sports</h3>
+        <section class="about-me">
             <picture>
                 <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
 
@@ -62,61 +125,85 @@
                       " type="image/jpeg">
                 <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
             </picture>
-            <p>
-                Growing up I have always liked being active, so I will spend most of my free time playing
-                sports. Among the sports I enjoy playing, as well as
-                watching, are basketball, volleyball, and ping pong.</p>
-        </article>
+            <p>Hi! My name is <strong>Alexander Huang</strong> and here is a little about me! I am a
+                computer science student and I like cats! In my free time, I like to
+                play sports and learn new skills!
+            </p>
+        </section>
 
-        <article>
-            <h3>Learn New Skills</h3>
-            <picture>
-                <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
+        <h2>Hobbies</h2>
 
-                <source srcset="../img/sunset-400.jpg 400w,
+        <section class="hobbies">
+
+            <article>
+                <h3>Play Sports</h3>
+                <picture>
+                    <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
+
+                    <source srcset="../img/sunset-400.jpg 400w,
                         ../img/sunset-800.jpg 800w,
                         ../img/sunset-1200.jpg 1200w
                       " sizes="(max-width: 400px) 400px,
                                (max-width: 800px) 800px,
                                1200px
                       " type="image/jpeg">
-                <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
-            </picture>
-            <p>Another of my favorite hobbies is to learn new skills. There is something about acquiring new
-                abilities that makes me feel accomplished. For now, my plan is to learn 3 new languages and then
-                be able to play an instrument (between piano and violin).</p>
-        </article>
+                    <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
+                </picture>
+                <p>
+                    Growing up I have always liked being active, so I will spend most of my free time playing
+                    sports. Among the sports I enjoy playing, as well as
+                    watching, are basketball, volleyball, and ping pong.</p>
+            </article>
 
-        <article>
-            <h3>Working Out</h3>
-            <picture>
-                <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
+            <article>
+                <h3>Learn New Skills</h3>
+                <picture>
+                    <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
 
-                <source srcset="../img/sunset-400.jpg 400w,
+                    <source srcset="../img/sunset-400.jpg 400w,
                         ../img/sunset-800.jpg 800w,
                         ../img/sunset-1200.jpg 1200w
                       " sizes="(max-width: 400px) 400px,
                                (max-width: 800px) 800px,
                                1200px
                       " type="image/jpeg">
-                <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
-            </picture>
-            <p>Lastly, I like working out. Right now, I am working towards the one-arm pushup. I would usually
-                just stick with body-weight excerises. My favorite type of excerise are push
-                excerise, e.g. push-ups and dips. Recently, I have started going to the gym. </p>
-        </article>
+                    <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
+                </picture>
+                <p>Another of my favorite hobbies is to learn new skills. There is something about acquiring new
+                    abilities that makes me feel accomplished. For now, my plan is to learn 3 new languages and then
+                    be able to play an instrument (between piano and violin).</p>
+            </article>
 
-        <article>
-            <p>Stay tuned for further updates!</p>
-        </article>
-    </section>
-</main>
+            <article>
+                <h3>Working Out</h3>
+                <picture>
+                    <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
 
-<footer>
-    <p>&copy; 2025 Made by Alexander Huang</p>
-</footer>
+                    <source srcset="../img/sunset-400.jpg 400w,
+                        ../img/sunset-800.jpg 800w,
+                        ../img/sunset-1200.jpg 1200w
+                      " sizes="(max-width: 400px) 400px,
+                               (max-width: 800px) 800px,
+                               1200px
+                      " type="image/jpeg">
+                    <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
+                </picture>
+                <p>Lastly, I like working out. Right now, I am working towards the one-arm pushup. I would usually
+                    just stick with body-weight excerises. My favorite type of excerise are push
+                    excerise, e.g. push-ups and dips. Recently, I have started going to the gym. </p>
+            </article>
 
-<noscript></noscript>
+            <article>
+                <p>Stay tuned for further updates!</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Made by Alexander Huang</p>
+    </footer>
+
+    <noscript></noscript>
 </body>
 
 </html>
