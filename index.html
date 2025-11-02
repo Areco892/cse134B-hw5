@@ -7,72 +7,116 @@
     <style></style>
 </head>
 
-<body>
-    <header>
-        <h1>Alexander Huang</h1>
-        <nav>
-            <p>Table of Navigation</p>
-            <ul>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-                <li><a href="experiments.html">Experiments</a></li>
-            </ul>
-        </nav>
-        <p>Site Progress: <progress value="33" max="100"></progress></p>
-    </header>
-    <hr>
-    <main>
-        <section>
-            <hgroup>
-                <h2><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10" cy="10" r="8" stroke="darkblue" stroke-width="2" fill="lightblue" />
-                    </svg>
-                    About Me
-                </h2>
+<header>
+    <h1>Alexander Huang</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<hr>
 
-                <p>Hi! My name is <strong>Alexander Huang</strong> and here is a <b>little</b> about me!</p>
-                <p>I am a <em>computer science</em> student and I like <i>cats!</i> <br> In my free time, I like to
-                    <span>play
-                        sports</span> and <span>learn a new skill</span>!
-                </p>
-            </hgroup>
+<main>
+    <section class="progress">
+        <p>Site Progress: <progress value="66" max="100"></progress></p>
+    </section>
+
+    <section class="about-me">
+        <picture>
+            <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
+
+            <source srcset="../img/sunset-400.jpg 400w,
+                        ../img/sunset-800.jpg 800w,
+                        ../img/sunset-1200.jpg 1200w
+                      " sizes="(max-width: 400px) 400px,
+                               (max-width: 800px) 800px,
+                               1200px
+                      " type="image/jpeg">
+            <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
+        </picture>
+        <p>Hi! My name is <strong>Alexander Huang</strong> and here is a little about me! I am a
+            computer science student and I like cats! In my free time, I like to
+            play sports and learn new skills!
+        </p>
+    </section>
+
+    <h2>Hobbies</h2>
+
+    <section class="hobbies">
+
+        <article>
+            <h3>Play Sports</h3>
             <picture>
+                <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
+
                 <source srcset="../img/sunset-400.jpg 400w,
-                            ../img/sunset-800.jpg 600w,
-                            ../img/sunset-1200.jpg 1600w
-                    " sizes="100vw" type="image/jpeg">
-                <img src="../img/sunset-1200.jpg" alt="A bridge with a warm sunset in the background.">
+                        ../img/sunset-800.jpg 800w,
+                        ../img/sunset-1200.jpg 1200w
+                      " sizes="(max-width: 400px) 400px,
+                               (max-width: 800px) 800px,
+                               1200px
+                      " type="image/jpeg">
+                <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
             </picture>
-        </section>
-        <section>
-            <h2>Hobbies</h2>
+            <p>
+                Growing up I have always liked being active, so I will spend most of my free time playing
+                sports. Among the sports I enjoy playing, as well as
+                watching, are basketball, volleyball, and ping pong.</p>
+        </article>
 
-            <article>
-                <h3>Play Sports</h3>
-                <p>One of my favorite activities to do any time I got a chance is to play some type of sport. Growing up
-                    I have always liked being active. Among the sports I enjoy playing, as well as watching, are
-                    basketball, volleyball, and ping pong.</p>
-            </article>
+        <article>
+            <h3>Learn New Skills</h3>
+            <picture>
+                <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
 
-            <article>
-                <h3>Learn New Skills</h3>
-                <p>In Progress...</p>
-            </article>
+                <source srcset="../img/sunset-400.jpg 400w,
+                        ../img/sunset-800.jpg 800w,
+                        ../img/sunset-1200.jpg 1200w
+                      " sizes="(max-width: 400px) 400px,
+                               (max-width: 800px) 800px,
+                               1200px
+                      " type="image/jpeg">
+                <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
+            </picture>
+            <p>Another of my favorite hobbies is to learn new skills. There is something about acquiring new
+                abilities that makes me feel accomplished. For now, my plan is to learn 3 new languages and then
+                be able to play an instrument (between piano and violin).</p>
+        </article>
 
-            <article>
-                <h3>Hangout with Friends</h3>
-                <p>In Progress...</p>
-            </article>
-        </section>
-    </main>
+        <article>
+            <h3>Working Out</h3>
+            <picture>
+                <source srcset="../img/sunset-400.jpg 400w" type=" image/jpeg">
 
-    <hr>
-    <footer>
-        <p>&copy; 2025 Made by Alexander Huang</p>
-    </footer>
+                <source srcset="../img/sunset-400.jpg 400w,
+                        ../img/sunset-800.jpg 800w,
+                        ../img/sunset-1200.jpg 1200w
+                      " sizes="(max-width: 400px) 400px,
+                               (max-width: 800px) 800px,
+                               1200px
+                      " type="image/jpeg">
+                <img src="../img/sunset-400.jpg" alt="A bridge with a warm sunset in the background.">
+            </picture>
+            <p>Lastly, I like working out. Right now, I am working towards the one-arm pushup. I would usually
+                just stick with body-weight excerises. My favorite type of excerise are push
+                excerise, e.g. push-ups and dips. Recently, I have started going to the gym. </p>
+        </article>
 
-    <noscript></noscript>
+        <article>
+            <p>Stay tuned for further updates!</p>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Made by Alexander Huang</p>
+</footer>
+
+<noscript></noscript>
 </body>
 
 </html>
