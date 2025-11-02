@@ -5,6 +5,58 @@
     <meta charset="utf-8">
     <title>Projects</title>
     <link rel="stylesheet" href="main.css">
+
+    <style>
+        main {
+            margin: 5rem 1rem;
+
+            h1 {
+                text-align: center;
+                font-size: 3rem;
+                padding: 1rem;
+            }
+
+            .projects {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+
+                project-card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                    border: 2px solid black;
+                    border-radius: 10px;
+                    padding: 1rem;
+                    width: clamp(40rem, 50vw, 50rem);
+
+                    h3 {
+                        font-size: 2rem;
+                        text-align: center;
+                    }
+
+
+                    picture {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+
+                        img {
+                            width: clamp(20rem, 25vw, 50rem);
+                        }
+                    }
+
+                    p {
+                        font-size: clamp(1.5rem, 2rem - 1vw, 2rem);
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    </style>
 </head>
 
 
