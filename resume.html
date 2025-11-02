@@ -4,51 +4,54 @@
 <head>
     <meta charset="utf-8">
     <title>Resume</title>
-    <link rel="icon" href="../img/icons8-portfolio-16.png">
 </head>
 
 <body>
+
     <header>
         <h1>Alexander Huang</h1>
-        <p>Table of Navigation</p>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-                <li><a href="experiments.html">Experiments</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
     <hr>
 
     <main>
+        <h1>Resume</h1>
+        <section class="resume">
 
-        <section>
-            <h2>Resume</h2>
-            <iframe src="../img/sample_resume.png" width="800" , height="1000"></iframe>
+            <picture>
+                <source srcset="img/sample_resume.png" sizes="100vw" type="image/jpeg">
+                <img src="img/sample_resume.png" alt="A bridge with a warm sunset in the background.">
+            </picture>
             <button>Download</button><br>
         </section>
 
-        <section>
-            <h2>Experience Details</h2>
-            <div class="experience">
+        <h2>Experience Details</h2>
+        <section class="experience">
+
+            <div class="experience-card">
                 <h3>Education</h3>
                 <p>I am currently pursuing a Computer Science bachelor's degree at UC San Diego!</p>
             </div>
 
-            <div class="experience">
+            <div class="experience-card">
                 <h3>Teaching Assistant</h3>
                 <p>In progress...</p>
             </div>
 
-            <div class="experience">
+            <div class="experience-card">
                 <h3>Tutor</h3>
                 <p>In progress...</p>
             </div>
         </section>
     </main>
-    <hr>
+
     <footer>
         <p>&copy; 2025 Made by Alexander Huang</p>
     </footer>

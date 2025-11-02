@@ -12,44 +12,83 @@
     </style>
 </head>
 
+
 <body>
+
     <header>
         <h1>Alexander Huang</h1>
-        <p>Table of Navigation</p>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
                 <li><a href="resume.html">Resume</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-                <li><a href="experiments.html">Experiments</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
     <hr>
+
     <main>
-        <h2>Projects</h2>
+        <h1>Projects</h1>
 
-        <project-card>
-            <h3>Personal Portfolio</h3>
-            <p>This website showcases my work using semantic HTML and accessible design.</p>
-        </project-card>
+        <section class="projects">
+            <project-card>
+                <h3>Personal Portfolio</h3>
+                <picture>
+                    <source srcset="../img/sunset-400.jpg 400w,
+                            ../img/sunset-800.jpg 600w,
+                            ../img/sunset-1200.jpg 1600w
+                    " sizes="100vw" type="image/jpeg">
+                    <img src="../img/sunset-1200.jpg" alt="A bridge with a warm sunset in the background.">
+                </picture>
+                <p>This website showcases my work using semantic HTML and accessible design. </p>
 
-        <project-card>
-            <h3>Weather App</h3>
-            <p>A simple web app that fetches real-time weather data using an API.</p>
-        </project-card>
+            </project-card>
 
-        <project-card>
-            <h3>Customer Relationship Management</h3>
-            <p>A simple CRM that keeps track of the clients and the progress done towards completing their tasks.</p>
-        </project-card>
+            <project-card>
+                <h3>Weather App</h3>
+                <picture>
+                    <source srcset="../img/sunset-400.jpg 400w,
+                            ../img/sunset-800.jpg 600w,
+                            ../img/sunset-1200.jpg 1600w
+                    " sizes="100vw" type="image/jpeg">
+                    <img src="../img/sunset-1200.jpg" alt="A bridge with a warm sunset in the background.">
+                </picture>
+                <p>A simple web app that fetches real-time weather data using an API.</p>
+            </project-card>
+
+            <project-card>
+                <h3>Customer Relationship Management</h3>
+                <picture>
+                    <source srcset="../img/sunset-400.jpg 400w,
+                            ../img/sunset-800.jpg 600w,
+                            ../img/sunset-1200.jpg 1600w
+                    " sizes="100vw" type="image/jpeg">
+                    <img src="../img/sunset-1200.jpg" alt="A bridge with a warm sunset in the background.">
+                </picture>
+                <p>A simple CRM that keeps track of the clients and the progress done towards completing their tasks.
+                </p>
+            </project-card>
+
+            <project-card>
+                <h3>In Construction...</h3>
+                <picture>
+                    <source srcset="../img/sunset-400.jpg 400w,
+                            ../img/sunset-800.jpg 600w,
+                            ../img/sunset-1200.jpg 1600w
+                    " sizes="100vw" type="image/jpeg">
+                    <img src="../img/sunset-1200.jpg" alt="A bridge with a warm sunset in the background.">
+                </picture>
+                <p>Stay Tuned for Future Projects! </p>
+            </project-card>
+        </section>
 
     </main>
 
-    <hr>
     <footer>
         <p>&copy; 2025 Made by Alexander Huang</p>
     </footer>
 </body>
+
 
 </html>
