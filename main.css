@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=MedievalSharp&family=Satisfy');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Satisfy&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --border: 2px solid black;
+    --border-radius: 10px;
+    --p-font-size: clamp(1.5rem, 2rem - 1vw, 2rem);
+    --h2-font-size: clamp(2rem, 3rem - 1vw, 3rem);
+    --h3-font-size: clamp(2rem, 2.5rem - 1vw, 2.5rem);
+}
+
+body {
+    font-family: MedievalSharp, 'Bitcount Grid Single', sans-serif;
+
+    header {
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        background-color: white;
+        width: 100%;
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+
+            ul {
+                display: flex;
+                list-style: none;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            ul a {
+                padding: 1rem;
+                font-size: 1.25rem;
+                color: black;
+                text-decoration: none;
+            }
+
+            ul a:hover {
+                text-decoration: underline;
+                text-underline-offset: 1rem;
+            }
+        }
+    }
+
+}
