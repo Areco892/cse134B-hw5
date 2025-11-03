@@ -26,7 +26,7 @@
                 flex-wrap: wrap;
                 justify-content: space-evenly;
                 gap: 1rem;
-                font-size: clamp(1.5rem, 2rem - 1.5vw, 2rem);
+                font-size: var(--p-font-size);
 
                 .socials {
                     display: flex;
@@ -35,8 +35,8 @@
                     gap: 1rem;
                     text-align: center;
                     justify-content: center;
-                    border: 2px solid rgb(219, 219, 219);
-                    border-radius: 10px;
+                    border: var(--border);
+                    border-radius: var(--border-radius);
                     background: lch(from white calc(l - 5) c h);
                     width: clamp(35rem, 100%, 45rem);
 
@@ -48,8 +48,8 @@
                         justify-content: center;
 
                         button {
-                            border: 2px solid black;
-                            border-radius: 10px;
+                            border: var(--border);
+                            border-radius: var(--border-radius);
                             padding: 0.5rem;
                             transition: transform;
                             font-size: 1.5rem;
@@ -74,8 +74,8 @@
                 justify-content: center;
                 padding: 2rem;
                 gap: 1rem;
-                border: 2px solid rgb(219, 219, 219);
-                border-radius: 10px;
+                border: var(--border);
+                border-radius: var(--border-radius);
                 background: lch(from white calc(l - 5) c h);
                 width: clamp(35rem, 100%, 45rem);
 
@@ -122,7 +122,7 @@
                     padding: 0.5rem;
                     width: clamp(5rem, 10rem - 1vw, 10rem);
                     align-self: center;
-                    font-size: clamp(1.25rem, 2rem - 1vw, 2rem);
+                    font-size: var(--p-font-size);
                     cursor: pointer;
                     transition: transform 0.5s ease;
                 }
