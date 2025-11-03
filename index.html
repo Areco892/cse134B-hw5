@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="img/favicon.png" type="image/png">
     <style>
+        main>p {
+            background: white;
+            padding: 2rem;
+            border: var(--border, 2px solid black);
+            border-radius: var(--border-radius, 10px);
+            font-size: var(--p-font-size, 2.5vw);
+        }
+
         main {
             margin: 7rem 1rem;
             display: flex;
@@ -22,21 +30,22 @@
                 border-radius: var(--border-radius, 10px);
             }
 
-            .progress {
-                font-size: var(--p-font-size, 2.5vw);
-            }
-
             .about-me {
                 display: flex;
                 flex-direction: row;
+                flex-wrap: wrap;
                 align-items: center;
                 justify-content: center;
                 gap: 2rem;
                 width: 80vw;
                 background-color: color(display-p3 1 1 0.9);
 
+                h2 {
+                    width: 100%;
+                }
+
                 img {
-                    width: clamp(5rem, 10vw, 10rem);
+                    width: clamp(15rem, 10vw, 20rem);
                     border-radius: var(--border-radius, 10px);
                 }
 
@@ -60,6 +69,10 @@
                 gap: 2rem;
                 border: none;
                 padding: 0;
+
+                h2 {
+                    width: 100%;
+                }
 
                 article {
                     display: flex;
@@ -110,13 +123,13 @@
     <hr>
 
     <main>
-        <section class="progress">
-            <p>Site Progress: <progress value="66" max="100"></progress></p>
-        </section>
+
+        <p>Site Progress: <progress value="66" max="100"></progress></p>
 
         <section class="about-me">
+            <h2>About Me</h2>
             <picture>
-                <source srcset="../img/sunset-400.jpg 400w" sizes="(max-width: 400px)" type="image/jpeg">
+                <source srcset="../img/sunset-400.jpg 400w" sizes="max-width: 400px" type="image/jpeg">
 
                 <source srcset="../img/sunset-400.jpg 400w,
                         ../img/sunset-800.jpg 800w,
@@ -133,14 +146,12 @@
             </p>
         </section>
 
-        <h2>Hobbies</h2>
-
         <section class="hobbies">
-
+            <h2>Hobbies</h2>
             <article>
                 <h3>Play Sports</h3>
                 <picture>
-                    <source srcset="../img/hobby1-400.png 400w" sizes="(max-width: 400px)" type="image/png">
+                    <source srcset="../img/hobby1-400.png 400w" sizes="max-width: 400px" type="image/png">
 
                     <source srcset="../img/hobby1-400.png 400w,
                         ../img/hobby1-800.png 800w,
@@ -161,7 +172,7 @@
             <article>
                 <h3>Learn New Skills</h3>
                 <picture>
-                    <source srcset="../img/hobby2-400.png 400w" sizes="(max-width: 400px)" type="image/png">
+                    <source srcset="../img/hobby2-400.png 400w" sizes="max-width: 400px" type="image/png">
 
                     <source srcset="../img/hobby2-400.png 400w,
                         ../img/hobby2-800.png 800w,
@@ -180,7 +191,7 @@
             <article>
                 <h3>Working Out</h3>
                 <picture>
-                    <source srcset="../img/hobby3-400.png 400w" type=" image/png">
+                    <source srcset="../img/hobby3-400.png 400w" sizes="max-width: 400px" type="image/png">
 
                     <source srcset="../img/hobby3-400.png 400w,
                         ../img/hobby3-800.png 800w,
@@ -197,7 +208,7 @@
             </article>
 
             <article>
-                <p>Stay tuned for further updates!</p>
+                <h3>Stay tuned for further updates!</h3>
             </article>
         </section>
     </main>

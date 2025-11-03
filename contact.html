@@ -21,7 +21,7 @@
                 font-size: 2rem;
             }
 
-            contact {
+            my-contact {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -58,6 +58,7 @@
 
                         button:hover {
                             transform: scale(1.05);
+                            cursor: pointer;
                         }
 
                         a {
@@ -161,13 +162,13 @@
     <main>
         <h1>Contact Me</h1>
 
-        <contact>
+        <my-contact>
 
             <section class="socials">
                 <h2>Get in Touch</h2>
                 <ol>
-                    <li><button><a href="https://www.linkedin.com/">Linkedin</a></button></li>
-                    <li><button><a href="https://github.com/Areco892">GitHub</a></button></li>
+                    <li><button>Linkedin</button></li>
+                    <li><button>GitHub</button></li>
                 </ol>
                 <p>Thanks for visiting my site!</p>
                 <p>If you like what you see, feel free to reach out. I would love to hear from you! </p>
@@ -187,11 +188,9 @@
                 <user-info>
                     <label for="first-name">First Name: <input type="text" id="first-name" placeholder="First Name"
                             autofocus></label>
-                    <label for="last-name">Last Name: <input type="text" id="last-name" placeholder="Last Name"
-                            autofocus></label>
-                    <label for="email">Email: <input type="email" id="email" placeholder="Email Address"
-                            autofocus></label>
-                    <label for="phone">Phone: <input type="tel" id="phone" placeholder="Phone Number" autofocus></label>
+                    <label for="last-name">Last Name: <input type="text" id="last-name" placeholder="Last Name"></label>
+                    <label for="email">Email: <input type="email" id="email" placeholder="Email Address"></label>
+                    <label for="phone">Phone: <input type="tel" id="phone" placeholder="Phone Number"></label>
                 </user-info>
 
                 <message>
@@ -201,7 +200,7 @@
 
                 <button>Send</button>
             </form>
-        </contact>
+        </my-contact>
 
     </main>
 </body>
