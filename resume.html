@@ -48,25 +48,6 @@
                 }
 
             }
-
-            .experience {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: space-evenly;
-                justify-content: center;
-                gap: 1rem;
-                width: 100%;
-
-                .experience-card {
-                    border: 2px solid black;
-                    border-radius: 10px;
-                    padding: 2rem;
-                    width: clamp(25rem, 100%, 45rem);
-                    text-align: center;
-                    font-size: var(--p-font-size);
-                }
-            }
         }
     </style>
 </head>
@@ -92,34 +73,15 @@
 
             <picture>
                 <source srcset="img/sample_resume.png" sizes="100vw" type="image/jpeg">
-                <img src="img/sample_resume.png" alt="A bridge with a warm sunset in the background.">
+                <img src="img/sample_resume.png"
+                    alt="Alexander's resume page with a description, education section, project section, and technical skill section.">
             </picture>
             <button>Download</button><br>
         </section>
 
-        <h2>Experience Details</h2>
-        <section class="experience">
-
-            <div class="experience-card">
-                <h3>Education</h3>
-                <p>I am currently pursuing a Computer Science bachelor's degree at UC San Diego!</p>
-            </div>
-
-            <div class="experience-card">
-                <h3>Teaching Assistant</h3>
-                <p>In progress...</p>
-            </div>
-
-            <div class="experience-card">
-                <h3>Tutor</h3>
-                <p>In progress...</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Made by Alexander Huang</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 Made by Alexander Huang</p>
+        </footer>
 </body>
 
 </html>
