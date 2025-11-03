@@ -104,6 +104,11 @@
                         height: 2rem;
                         font-size: 75%;
                     }
+
+                }
+
+                label:has(input:invalid) {
+                    border-bottom: 2px solid red;
                 }
 
                 message {
@@ -133,6 +138,7 @@
                     color: red;
                 }
             }
+
         }
     </style>
 </head>
@@ -179,15 +185,18 @@
 
 
                 <user-info>
-                    <label for="first-name">First Name: <input type="text" id="first-name" required autofocus></label>
-                    <label for="last-name">Last Name: <input type="text" id="last-name" required autofocus></label>
-                    <label for="email">Email: <input type="email" id="email" required autofocus></label>
-                    <label for="phone">Phone: <input type="tel" id="phone" required autofocus></label>
+                    <label for="first-name">First Name: <input type="text" id="first-name" placeholder="First Name"
+                            autofocus></label>
+                    <label for="last-name">Last Name: <input type="text" id="last-name" placeholder="Last Name"
+                            autofocus></label>
+                    <label for="email">Email: <input type="email" id="email" placeholder="Email Address"
+                            autofocus></label>
+                    <label for="phone">Phone: <input type="tel" id="phone" placeholder="Phone Number" autofocus></label>
                 </user-info>
 
                 <message>
                     <label for="message">Message: </label>
-                    <textarea id="message" requried></textarea>
+                    <textarea id="message"></textarea>
                 </message>
 
                 <button>Send</button>
