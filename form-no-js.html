@@ -23,6 +23,35 @@
                     padding: 0.5rem;
                 }
 
+                input:placeholder-shown,
+                textarea:placeholder-shown {
+                    background-color: #f9f9f9;
+                    border-color: #ccc;
+                }
+
+                input:focus,
+                textarea:focus {
+                    outline: none;
+                }
+
+                input:required,
+                textarea:required {
+                    border-left: 4px solid #0883ff;
+                    border-right: 4px solid #0883ff;
+                }
+
+                input:user-valid,
+                textarea:user-valid {
+                    border-left-color: #02f527;
+                    border-right-color: #02f527;
+                }
+
+                input:user-invalid,
+                textarea:user-invalid {
+                    border-left-color: #f50202;
+                    border-right-color: #f50202;
+                }
+
                 button {
                     width: clamp(5rem, 5vw, 5rem);
                     align-self: flex-end;
@@ -47,13 +76,16 @@
         <form action="https://httpbin.org/post" method="post">
 
             <label for="name">Name<span aria-hidden="required">*</span></label>
-            <input name="name" type="text" placeholder="Enter your full name" required>
+            <input name="name" type="text" placeholder="Enter your full name" minlength="3" maxlength="50"
+                pattern="[A-Za-z]+" title="Name should only contain letters." required>
 
             <label for="email">Email<span aria-hidden="required">*</label>
-            <input name="email" type="email" placeholder="Enter your email" required>
+            <input name="email" type="email" placeholder="Enter your email" pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                title="Email should have proper pattern, e.g contain @ symbol." maxlength="100" required>
 
             <label for="comment">Comments<span aria-hidden="required">*</label>
-            <textarea name="comment" type="text" required></textarea>
+            <textarea name="comment" type="text" placeholder="Enter your message (10-500 characters)" minlength="10" ,
+                maxlength="500" required></textarea>
 
             <label for="possible_bot"></label>
             <input name="possible_bot" value="true" hidden>
