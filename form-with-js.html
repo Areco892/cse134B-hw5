@@ -52,9 +52,15 @@
                     border-right-color: #f50202;
                 }
 
-                input.flash {
+                input.flash,
+                textarea.flash {
                     animation: flash-red 3s ease;
                     border-color: #f50202;
+                }
+
+                textarea.warning {
+                    animation: flash-red 3s ease;
+                    border-color: #fc8a08;
                 }
 
                 @keyframes flash-red {
@@ -71,11 +77,11 @@
                     }
                 }
 
-                output {
+                #error-msg {
                     display: none;
                 }
 
-                output.visible {
+                #error-msg.visible {
                     display: flex;
                     flex-direction: column;
                     min-height: 1.2rem;
@@ -85,7 +91,20 @@
                     opacity: 1;
                 }
 
-                output.fade-out {
+                #error-msg.fade-out {
+                    opacity: 0;
+                }
+
+                #info-msg.visible {
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 1.2rem;
+                    font-size: 1rem;
+                    transition: opacity 0.3s ease;
+                    opacity: 1;
+                }
+
+                #error-msg.fade-out {
                     opacity: 0;
                 }
 
@@ -114,19 +133,20 @@
 
             <label for="name">Name<span aria-hidden="required">*</span></label>
             <input id="name" name="name" type="text" placeholder="Enter your full name" minlength="3" maxlength="50"
-                pattern="[A-Za-z]+" title="Name should only contain letters." required>
+                pattern="[A-Za-z]+" title="Name should only contain letters." autocomplete="name" aria-required="true"
+                aria-describedby="info-msg" required>
 
             <label for="email">Email<span aria-hidden="required">*</label>
             <input id="email" name="email" type="email" placeholder="Enter your email"
                 pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" title="Email should have proper pattern, e.g contain @ symbol."
-                maxlength="100" required>
+                maxlength="100" autocomplete="email" aria-required="true" aria-describedby="info-msg" required>
 
             <label for="comment">Comments<span aria-hidden="required">*</label>
             <textarea id="comment" name="comment" type="text" placeholder="Enter your message (10-500 characters)"
-                minlength="10" , maxlength="500" required></textarea>
+                minlength="10" , maxlength="500" aria-required="true" aria-describedby="info-msg" required></textarea>
 
             <label for="possible_bot"></label>
-            <input name="possible_bot" value="true" hidden>
+            <input id="possible_bot" name="possible_bot" value="true" hidden>
 
             <output id="error-msg" role="alert"></output>
             <output id="info-msg"></output>
@@ -141,19 +161,16 @@
 
     <script>
         const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const commentInput = document.getElementById('comment');
+
         const errorOutput = document.getElementById('error-msg');
-        const allowedPattern = /^[A-Za-z '-]*$/;
+        const infoOutput = document.getElementById('info-msg');
 
-        nameInput.addEventListener('input', (e) => {
-            const value = nameInput.value;
+        const nameAllowedPattern = /^[A-Za-z '-]*$/;
+        const emailAllowedPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-            if (!allowedPattern.test(value)) {
-                nameInput.value = value.slice(0, -1);
-                nameInput.classList.add('flash');
-                setTimeout(() => nameInput.classList.remove('flash'), 500);
-                showTemporaryError("Name can only contain letters, spaces, hyphens, or apostrophes.");
-            }
-        });
+        let form_errors = []
 
         function showTemporaryError(message) {
             errorOutput.textContent = message;
@@ -173,6 +190,83 @@
             }, 3000);
 
         }
+
+        function showInfo(message) {
+            infoOutput.textContent = message;
+            infoOutput.classList.add('visible');
+        }
+
+        function clearInfo() {
+            infoOutput.textContent = '';
+            infoOutput.classList.remove('visible');
+        }
+
+        const fields = [nameInput, emailInput, commentInput];
+        fields.forEach((input) => {
+            input.addEventListener('focus', () => {
+                let message = '';
+                switch (input.id) {
+                    case 'name':
+                        message = "Enter your full name (only letters, spaces, hyphens, apostrophes are accepted).";
+                        break;
+                    case 'email':
+                        message = "Enter a valid email, including the @ symbol. For example, name@email.com).";
+                        break;
+                    case 'comment':
+                        message = "Enter your message here. Max characters: 250 characters.";
+                        break;
+                }
+                showInfo(message);
+            });
+
+            input.addEventListener('blur', clearInfo);
+        });
+
+        nameInput.addEventListener('input', (e) => {
+            const value = nameInput.value;
+            if (!nameAllowedPattern.test(value)) {
+                form_errors.push(`In name field, the user didn't follow the pattern. Entered: ${value}`);
+                nameInput.value = value.slice(0, -1);
+                nameInput.classList.add('flash');
+                setTimeout(() => nameInput.classList.remove('flash'), 500);
+                showTemporaryError("Name can only contain letters, spaces, hyphens, or apostrophes.");
+            }
+            if (value.length >= 50) {
+                nameInput.value = value.slice(0, -1);
+                nameInput.classList.add('flash');
+                setTimeout(() => nameInput.classList.remove('flash'), 500);
+                showTemporaryError("Max character count reached!");
+            }
+        });
+
+        emailInput.addEventListener('input', (e) => {
+            const value = emailInput.value;
+            if (value && !emailAllowedPattern.test(value)) {
+                emailInput.classList.add('flash');
+                setTimeout(() => emailInput.classList.remove('flash'), 500);
+                showTemporaryError("Please enter a valid email address.");
+            }
+        });
+
+        commentInput.addEventListener('input', (e) => {
+            const value = commentInput.value;
+            const remainingCharacters = 250 - value.length;
+
+            infoOutput.textContent = `Remaining character count: ${remainingCharacters}`;
+
+            if (value.length > 225) {
+                commentInput.classList.add('warning');
+                setTimeout(() => commentInput.classList.remove('flash'), 500);
+                showTemporaryError("Warning! Character limit almost reached!");
+            }
+            else if (value.length > 250) {
+                commentInput.value = value.slice(0, -1);
+                commentInput.classList.add('flash');
+                setTimeout(() => commentInput.classList.remove('flash'), 500);
+                showTemporaryError("You have exceed the maximum allowed number of characters.");
+                form_errors.push("In comment field, the user exceeded the 250 max character limit.")
+            };
+        });
 
     </script>
 </body>
