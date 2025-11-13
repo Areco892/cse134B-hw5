@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="img/favicon.png" type="image/png">
     <style>
+        [data-theme="dark"] #theme-image {
+            content: url("img/resume\ -\ dark\ mode.png")
+        }
+
         main {
             margin: 5rem 1rem;
             display: flex;
@@ -75,8 +79,8 @@
     <main>
         <h1>Resume</h1>
         <picture>
-            <source srcset="img/sample_resume.png 800w" sizes="100vw" type="image/jpeg">
-            <img src="img/sample_resume.png"
+            <source srcset="img/resume - light mode.png 800w" sizes="100vw" type="image/jpeg">
+            <img id="theme-image" src="img/resume - light mode.png"
                 alt="Alexander's resume page with a description, education section, project section, and technical skill section.">
         </picture>
         <button>Download</button><br>
