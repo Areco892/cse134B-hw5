@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact Form</title>
+    <link rel="stylesheet" href="main.css">
+
     <style>
         main {
+            padding: 7rem;
+            font-family: sans-serif;
+
             form {
                 border: 2px solid black;
                 border-radius: 10px;
@@ -125,6 +130,15 @@
 
     <header>
         <h1>Alexander Huang</h1>
+        <button id="theme-toggle" aria-label="Toggle dark mode">Light</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
@@ -159,6 +173,7 @@
 
     </footer>
 
+    <script src="script.js"></script>
     <script>
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
