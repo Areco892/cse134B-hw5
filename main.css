@@ -15,6 +15,7 @@
     --h3-font-size: clamp(2rem, 2.5rem - 1vw, 2.5rem);
     --bg-color: #ffffff;
     --text-color: #000000;
+    --border: 2px solid rgba(0, 0, 0, 0.774);
 }
 
 [data-theme="dark"] {

@@ -38,7 +38,6 @@
                     justify-content: center;
                     border: var(--border);
                     border-radius: var(--border-radius);
-                    background: lch(from white calc(l - 5) c h);
                     width: clamp(35rem, 100%, 45rem);
 
                     ol {
@@ -49,11 +48,13 @@
                         justify-content: center;
 
                         button {
-                            border: var(--border);
-                            border-radius: var(--border-radius);
                             padding: 0.5rem;
                             transition: transform;
                             font-size: 1.5rem;
+                            background-color: var(--bg-color);
+                            color: var(--text-color);
+                            border: var(--border);
+                            border-radius: var(--border-radius);
                         }
 
                         button:hover {
@@ -78,17 +79,7 @@
                 gap: 1rem;
                 border: var(--border);
                 border-radius: var(--border-radius);
-                background: lch(from white calc(l - 5) c h);
                 width: clamp(35rem, 100%, 45rem);
-
-                fieldset {
-                    display: flex;
-                    flex-direction: row;
-                    align-self: center;
-                    justify-content: space-evenly;
-                    padding: 1rem;
-                    width: 100%;
-                }
 
                 user-info {
                     display: grid;
@@ -98,31 +89,32 @@
 
                     input {
                         width: 100%;
-                        border: none;
-                        background-color: transparent;
-                        outline: none;
-                        border-bottom: 1px solid black;
                         height: 2rem;
                         font-size: 75%;
+                        background-color: var(--bg-color);
+                        color: var(--text-color);
+                        border: var(--border);
+                        border-radius: var(--border-radius);
+                        padding: 0.5rem;
                     }
 
                 }
 
-                label:has(input:invalid) {
-                    border-bottom: 2px solid red;
-                }
-
-                my-message {
+                user-message {
                     padding-bottom: 2rem;
 
                     textarea {
                         width: 100%;
                         height: 100%;
                         resize: vertical;
-
+                        background-color: var(--bg-color);
+                        color: var(--text-color);
+                        border: var(--border);
+                        border-radius: var(--border-radius);
+                        padding: 0.5rem;
+                        font-size: 75%;
                     }
                 }
-
 
                 button {
                     border-radius: 10px;
@@ -131,12 +123,10 @@
                     align-self: center;
                     font-size: var(--p-font-size);
                     cursor: pointer;
-                    transition: transform 0.5s ease;
-                }
-
-                button:hover {
-                    transform: scale(1.05);
-                    color: red;
+                    background-color: var(--bg-color);
+                    color: var(--text-color);
+                    border: var(--border);
+                    border-radius: var(--border-radius);
                 }
             }
 
@@ -177,14 +167,6 @@
 
             <form action="/contact" method="post">
                 <h2>Contact Form</h2>
-                <fieldset>
-
-                    <legend>Personal or Work Related Question</legend>
-                    <label id="personal"><input type="radio" name="question-type" value="personal"> Personal</label>
-                    <label id="work"><input type="radio" name="question-type" value="work"> Work</label><br>
-
-                </fieldset>
-
 
                 <user-info>
                     <label for="first-name">First Name: <input type="text" id="first-name" placeholder="First Name"
@@ -194,10 +176,10 @@
                     <label for="phone">Phone: <input type="tel" id="phone" placeholder="Phone Number"></label>
                 </user-info>
 
-                <my-message>
+                <user-message>
                     <label for="message">Message: </label>
                     <textarea id="message"></textarea>
-                </my-message>
+                </user-message>
 
                 <button>Send</button>
             </form>
