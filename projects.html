@@ -10,7 +10,7 @@
         main {
             margin: 5rem 1rem;
 
-            h1 {
+            h2 {
                 text-align: center;
                 font-size: 3rem;
                 padding: 1rem;
@@ -60,6 +60,12 @@
             }
         }
     </style>
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
 </head>
 
 
@@ -80,7 +86,7 @@
     <hr>
 
     <main>
-        <h1>Projects</h1>
+        <h2>Projects</h2>
 
         <section class="projects">
             <project-card>

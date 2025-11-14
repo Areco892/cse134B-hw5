@@ -8,7 +8,7 @@
     <link rel="icon" href="img/favicon.png" type="image/png">
     <style>
         main {
-            margin: 7rem 1rem;
+            margin: 5rem 1rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -17,7 +17,13 @@
 
             section {
                 background: white;
-                padding: 2rem;
+                padding: 0 2rem;
+
+                h2 {
+                    text-align: center;
+                    font-size: 3rem;
+                    padding: 1rem;
+                }
             }
 
             .about-me {
@@ -95,6 +101,12 @@
 
         }
     </style>
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
 </head>
 
 <body>

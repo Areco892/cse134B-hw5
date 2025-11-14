@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=MedievalSharp&family=Satisfy');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Satisfy&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=MedievalSharp&family=Satisfy');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Satisfy&display=swap'); */
 
 * {
     margin: 0;
@@ -9,13 +9,12 @@
 
 :root {
     --border: 2px solid black;
-    --border-radius: 10px;
+    --border-radius: 2rem;
     --p-font-size: clamp(1.5rem, 2rem - 1vw, 2rem);
     --h2-font-size: clamp(2rem, 3rem - 1vw, 3rem);
     --h3-font-size: clamp(2rem, 2.5rem - 1vw, 2.5rem);
     --bg-color: #ffffff;
     --text-color: #000000;
-    --border: 2px solid rgba(0, 0, 0, 0.774);
 }
 
 [data-theme="dark"] {
@@ -25,10 +24,9 @@
 }
 
 body {
-    font-family: MedievalSharp, 'Bitcount Grid Single', sans-serif;
+    /* font-family: MedievalSharp, 'Bitcount Grid Single', sans-serif; */
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
 
     header {
         position: fixed;
@@ -73,4 +71,60 @@ body {
         }
     }
 
+}
+
+/* Turn cross-document view-transitions on */
+/* Note that this at-rule is all that is needed to create the default cross-fade animation  */
+
+@view-transition {
+    navigation: auto;
+}
+
+header {
+    view-transition-name: header;
+    z-index: 2;
+}
+
+main {
+    view-transition-name: main;
+    z-index: 1;
+}
+
+/* Customize the default animation behavior */
+
+::view-transition-group(main) {
+    animation-duration: 0.5s;
+}
+
+/* Create a custom animation */
+
+@keyframes move-out {
+    from {
+        transform: translateY(0%);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes move-in {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+/* Apply the custom animation to the old and new page states */
+
+::view-transition-old(main) {
+    animation: 0.4s ease-in both move-out;
+
+}
+
+::view-transition-new(main) {
+    animation: 0.4s ease-in both move-in;
 }
