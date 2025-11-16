@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <title>Contact Form</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
 
     <style>
         main {
-            padding: 7rem;
-            font-family: sans-serif;
+            padding: 7rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
 
             form {
                 border: var(--border);
@@ -127,6 +132,12 @@
 
         }
     </style>
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
 </head>
 
 <body>
@@ -145,6 +156,7 @@
     </header>
 
     <main>
+        <h2>Contact Form</h2>
         <form action="https://httpbin.org/post" method="post">
 
             <label for="name">Name<span aria-hidden="required">*</span></label>
@@ -170,10 +182,6 @@
             <button id="submit" type="submit">Submit</button>
         </form>
     </main>
-
-    <footer>
-
-    </footer>
 
     <script src="script.js"></script>
     <script>
