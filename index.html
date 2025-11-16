@@ -16,7 +16,7 @@
             gap: 1rem;
 
             section {
-                background: white;
+                background-color: var(--bg-color);
                 padding: 0 2rem;
 
                 h2 {
@@ -24,6 +24,14 @@
                     font-size: 3rem;
                     padding: 1rem;
                 }
+            }
+
+            a {
+                border: var(--border);
+                border-radius: var(--border-radius);
+                text-decoration: none;
+                color: var(--color);
+                padding: 1rem;
             }
 
             .about-me {
@@ -125,10 +133,8 @@
     <hr>
 
     <main>
-        <section>
-            <a href="form-no-js.html">Form no JS</a>
-            <a href="form-with-js.html">Form with JS</a>
-        </section>
+        <a href="form-no-js.html">Form no JS</a>
+        <a href="form-with-js.html">Form with JS</a>
 
         <section class="about-me">
             <h2>About Me</h2>
