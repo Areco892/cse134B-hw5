@@ -133,16 +133,16 @@
         <h2>Contact Form</h2>
         <form action="https://httpbin.org/post" method="post">
 
-            <label for="name">Name*</label>
+            <label for="name">Name<span aria-hidden="true">*</span></label>
             <input id="name" name="name" type="text" placeholder="Enter your full name" maxlength="50"
                 pattern="[A-Za-z ]+" title="Name should only contain letters." required>
 
-            <label for="email">Email*</label>
+            <label for="email">Email<span aria-hidden="true">*</span></label>
             <input id="email" name="email" type="email" placeholder="Enter your email"
                 pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" title="Email should have proper pattern, e.g contain @ symbol."
                 maxlength="100" required>
 
-            <label for="comment">Comments*</label>
+            <label for="comment">Comments<span aria-hidden="true">*</span></label>
             <textarea id="comment" name="comment" placeholder="Enter your message (10-500 characters)" minlength="10"
                 maxlength="500" required></textarea>
 
