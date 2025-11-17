@@ -67,7 +67,10 @@
                     width: clamp(5rem, 5vw, 5rem);
                     align-self: flex-end;
                     font-size: clamp(1rem, 3vw, 1rem);
+                    border: var(--border);
                     border-radius: var(--border-radius);
+                    background-color: var(--bg-color);
+                    color: var(--color);
                 }
 
             }
@@ -102,8 +105,8 @@
         <form action="https://httpbin.org/post" method="post">
 
             <label for="name">Name<span aria-hidden="required">*</span></label>
-            <input name="name" type="text" placeholder="Enter your full name" minlength="3" maxlength="50"
-                pattern="[A-Za-z]+" title="Name should only contain letters." required>
+            <input name="name" type="text" placeholder="Enter your full name" maxlength="50" pattern="[A-Za-z ]+"
+                title="Name should only contain letters." required>
 
             <label for="email">Email<span aria-hidden="required">*</label>
             <input name="email" type="email" placeholder="Enter your email" pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
@@ -113,7 +116,6 @@
             <textarea name="comment" type="text" placeholder="Enter your message (10-500 characters)" minlength="10" ,
                 maxlength="500" required></textarea>
 
-            <label for="possible_bot"></label>
             <input name="possible_bot" value="true" hidden>
 
             <output id="error-msg" role="alert">Error</output>

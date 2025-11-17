@@ -36,7 +36,9 @@
                 input:placeholder-shown,
                 textarea:placeholder-shown {
                     background-color: var(--bg-color);
-                    border: var(--border);
+
+                    border-left: 4px solid #0883ff;
+                    border-right: 4px solid #0883ff;
                     border-radius: var(--border-radius);
                 }
 
@@ -47,11 +49,6 @@
 
                 input:required,
                 textarea:required {
-                    border-left: 4px solid #0883ff;
-                    border-right: 4px solid #0883ff;
-                }
-
-                input.no-input {
                     border-left: 4px solid #0883ff;
                     border-right: 4px solid #0883ff;
                 }
@@ -123,7 +120,10 @@
                     width: clamp(5rem, 5vw, 5rem);
                     align-self: flex-end;
                     font-size: clamp(1rem, 3vw, 1rem);
-                    border-radius: 10px;
+                    border: var(--border);
+                    border-radius: var(--border-radius);
+                    background-color: var(--bg-color);
+                    color: var(--color);
                 }
 
             }
@@ -152,19 +152,21 @@
 
             <label for="name">Name<span aria-hidden="required">*</span></label>
             <input id="name" name="name" type="text" placeholder="Enter your full name" minlength="3" maxlength="50"
-                pattern="[A-Za-z]+" title="Name should only contain letters." autocomplete="name" aria-required="true"
+                pattern="[A-Za-z ]+" title="Name should only contain letters." autocomplete="name" aria-required="true"
                 aria-describedby="info-msg" required>
 
             <label for="email">Email<span aria-hidden="required">*</label>
             <input id="email" name="email" type="email" placeholder="Enter your email"
                 pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" title="Email should have proper pattern, e.g contain @ symbol."
-                maxlength="100" autocomplete="email" aria-required="true" aria-describedby="info-msg" required>
+                minlength="5" maxlength="100" autocomplete="email" aria-required="true" aria-describedby="info-msg"
+                required>
 
             <label for="comment">Comments<span aria-hidden="required">*</label>
             <textarea id="comment" name="comment" type="text" placeholder="Enter your message (10-250 characters)"
                 minlength="10" , maxlength="251" aria-required="true" aria-describedby="info-msg" required></textarea>
 
-            <label for="possible_bot"></label>
+            <input id="form-errors" name="form-errors" value="" hidden>
+
             <input id="possible_bot" name="possible_bot" value="true" hidden>
 
             <output id="error-msg" role="alert"></output>
@@ -183,12 +185,12 @@
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const commentInput = document.getElementById('comment');
+        const formErrorsInput = document.getElementById('form-errors')
 
         const errorOutput = document.getElementById('error-msg');
         const infoOutput = document.getElementById('info-msg');
 
-        const nameAllowedPattern = /^[A-Za-z '-]*$/;
-        const emailAllowedPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        const submitBtn = document.getElementById('submit');
 
         let form_errors = []
 
@@ -221,16 +223,29 @@
             infoOutput.classList.remove('visible');
         }
 
+        function addError(errorField, errorValue, errorReason) {
+            let error = {
+                field: errorField,
+                value: errorValue,
+                reason: errorReason
+            }
+            form_errors.push(JSON.stringify(error));
+        }
+
+        function addFormErrors() {
+            formErrorsInput.value = form_errors;
+        }
+
         const fields = [nameInput, emailInput, commentInput];
         fields.forEach((input) => {
             input.addEventListener('focus', () => {
                 let message = '';
                 switch (input.id) {
                     case 'name':
-                        message = "Enter your full name (only letters, spaces, hyphens, apostrophes are accepted).";
+                        message = "Enter your full name (only letters, spaces, hyphens, apostrophes are accepted). Names must not exceed 50 characters.";
                         break;
                     case 'email':
-                        message = "Enter a valid email. Email should have proper pattern, e.g contain @ symbol. For example, name@email.com.";
+                        message = "Enter a valid email. Email should have proper pattern, e.g contain @ symbol. Email must not exceed 100 characters. For example, name@email.com.";
                         break;
                     case 'comment':
                         message = "Enter your message here. Max characters: 250 characters.";
@@ -242,40 +257,52 @@
             input.addEventListener('blur', clearInfo);
         });
 
-        nameInput.addEventListener('blur', (e) => {
-            const value = nameInput.value;
-            if (!nameAllowedPattern.test(value)) {
-                form_errors.push(`In name field, the user didn't follow the pattern. Entered: ${value}`);
-                nameInput.value = value.slice(0, -1);
+        nameInput.addEventListener('input', () => {
+            if (nameInput.validity.patternMismatch) {
+                addError("Name", nameInput.value, "Added not allowed characters");
+                nameInput.value = nameInput.value.slice(0, -1);
                 nameInput.classList.add('flash');
                 setTimeout(() => nameInput.classList.remove('flash'), 500);
                 showTemporaryError("Name can only contain letters, spaces, hyphens, or apostrophes.");
             }
-            if (value.length == 0) {
-                nameInput.classList.remove('valid');
-                nameInput.classList.add('no-input');
+        });
+
+        nameInput.addEventListener('blur', () => {
+            if (nameInput.value.length === 0) {
+                nameInput.classList = [];
             }
-            else if (value.length < 50) {
-                nameInput.classList.add('valid');
-            }
-            else {
-                nameInput.value = value.slice(0, -1);
+            else if (!nameInput.checkValidity() && nameInput.value.length > 0) {
+                addError("Name", nameInput.value, "Added prohibited characters");
+                nameInput.value = "";
+                nameInput.classList = [];
                 nameInput.classList.add('flash');
                 setTimeout(() => nameInput.classList.remove('flash'), 500);
-                showTemporaryError("Max character count reached!");
+                showTemporaryError("Name can only contain letters, spaces, hyphens, or apostrophes.");
+            }
+            else {
+                nameInput.classList = [];
+                nameInput.classList.add('valid');
             }
         });
 
         emailInput.addEventListener('blur', (e) => {
-            const value = emailInput.value;
-            if (!emailAllowedPattern.test(value)) {
+            if (emailInput.value.length === 0) {
+                emailInput.classList = [];
+            }
+            else if (!emailInput.checkValidity()) {
+                if (!emailInput.value.includes('@')) {
+                    addError("Email", emailInput.value, "Missing @");
+                } else {
+                    addError("Email", emailInput.value, "Missing proper domain");
+                }
+                emailInput.classList = [];
                 emailInput.classList.add('flash');
                 setTimeout(() => emailInput.classList.remove('flash'), 500);
                 showTemporaryError("Please enter a valid email address.");
                 emailInput.classList.add('invalid');
             }
             else {
-                emailInput.classList.remove('invalid');
+                emailInput.classList = [];
                 emailInput.classList.add('valid');
             }
         });
@@ -300,6 +327,8 @@
 
             infoOutput.textContent = `Remaining character count: ${remainingCharacters}`;
         });
+
+        submitBtn.addEventListener('click', addFormErrors);
 
     </script>
 </body>
