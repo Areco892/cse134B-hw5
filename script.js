@@ -55,18 +55,3 @@ function customTheme() {
     };
     localStorage.setItem('theme', JSON.stringify(custom));
 }
-
-function loadTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === "light" || savedTheme === "dark") {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-        const custom = JSON.parse(savedTheme);
-        document.documentElement.style.setProperty('--custom-bg-color', custom.bg);
-        document.documentElement.style.setProperty('--custom-text-color', custom.text);
-        document.documentElement.style.setProperty('--custom-text-font', custom.font);
-        document.documentElement.classList.add("custom-theme");
-    }
-}
-
-loadTheme();
