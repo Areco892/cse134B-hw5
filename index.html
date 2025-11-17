@@ -120,7 +120,29 @@
 <body>
     <header>
         <h1>Alexander Huang</h1>
-        <button id="theme-toggle" aria-label="Toggle dark mode">Light</button>
+        <button id="theme-toggle" aria-label="Toggle dark mode">Theme</button>
+
+        <form id="theme-form" class="hidden">
+            <button id="light-dark">Dark</button>
+
+            <label for="backgroundColor">Background Color: </label>
+            <input name="backgroundColor" type="color">
+
+            <label for="textColor">Text Color: </label>
+            <input name="textColor" type="color">
+
+            <label for="textFont">Text Font: </label>
+            <select name="textFont">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier">Courier</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Helvetica">Helvetica</option>
+            </select>
+
+            <button id="theme-pick">Apply</button>
+        </form>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -228,6 +250,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <noscript>To toggle the themes, JavaScript must be activated.</noscript>
 </body>
 
 </html>

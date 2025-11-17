@@ -13,6 +13,7 @@
             flex-direction: column;
             align-items: center;
             line-height: 1.5rem;
+            gap: 1rem;
 
             form {
                 border: var(--border);
@@ -148,6 +149,7 @@
     </header>
 
     <main>
+        <h2>Contact Form</h2>
         <form action="https://httpbin.org/post" method="post">
 
             <label for="name">Name<span aria-hidden="required">*</span></label>
@@ -236,28 +238,31 @@
             formErrorsInput.value = form_errors;
         }
 
+        function addInfo(event) {
+            const input = event.target;
+            let message = '';
+            switch (input.id) {
+                case 'name':
+                    message = "Enter your full name (only letters, spaces, hyphens, apostrophes are accepted). Names must not exceed 50 characters.";
+                    break;
+                case 'email':
+                    message = "Enter a valid email. Email should have proper pattern, e.g contain @ symbol. Email must not exceed 100 characters. For example, name@email.com.";
+                    break;
+                case 'comment':
+                    message = "Enter your message here. Max characters: 250 characters.";
+                    break;
+            }
+            showInfo(message);
+        }
+
         const fields = [nameInput, emailInput, commentInput];
         fields.forEach((input) => {
-            input.addEventListener('focus', () => {
-                let message = '';
-                switch (input.id) {
-                    case 'name':
-                        message = "Enter your full name (only letters, spaces, hyphens, apostrophes are accepted). Names must not exceed 50 characters.";
-                        break;
-                    case 'email':
-                        message = "Enter a valid email. Email should have proper pattern, e.g contain @ symbol. Email must not exceed 100 characters. For example, name@email.com.";
-                        break;
-                    case 'comment':
-                        message = "Enter your message here. Max characters: 250 characters.";
-                        break;
-                }
-                showInfo(message);
-            });
-
+            input.addEventListener('focus', addInfo);
             input.addEventListener('blur', clearInfo);
         });
 
-        nameInput.addEventListener('input', () => {
+        /* Handle user name input, when typing and when autofilling */
+        function handleNameInput() {
             if (nameInput.validity.patternMismatch) {
                 addError("Name", nameInput.value, "Added not allowed characters");
                 nameInput.value = nameInput.value.slice(0, -1);
@@ -265,9 +270,10 @@
                 setTimeout(() => nameInput.classList.remove('flash'), 500);
                 showTemporaryError("Name can only contain letters, spaces, hyphens, or apostrophes.");
             }
-        });
+        }
+        nameInput.addEventListener('input', handleNameInput);
 
-        nameInput.addEventListener('blur', () => {
+        function handleNameAutofill() {
             if (nameInput.value.length === 0) {
                 nameInput.classList = [];
             }
@@ -283,9 +289,11 @@
                 nameInput.classList = [];
                 nameInput.classList.add('valid');
             }
-        });
+        }
+        nameInput.addEventListener('blur', handleNameAutofill);
 
-        emailInput.addEventListener('blur', (e) => {
+        /* Handle user email input, just need to check once the user is doing typing */
+        function handleEmailInput() {
             if (emailInput.value.length === 0) {
                 emailInput.classList = [];
             }
@@ -305,9 +313,12 @@
                 emailInput.classList = [];
                 emailInput.classList.add('valid');
             }
-        });
+        }
+        emailInput.addEventListener('blur', handleEmailInput);
 
-        commentInput.addEventListener('input', (e) => {
+        /* Handle user comment input, including a warning when getting close to the 
+           maximum allowed characters and an error when exceeding that maximum.*/
+        function handleCommentInput() {
             const value = commentInput.value;
             let remainingCharacters = 250 - value.length;
 
@@ -326,11 +337,13 @@
             };
 
             infoOutput.textContent = `Remaining character count: ${remainingCharacters}`;
-        });
+        }
+        commentInput.addEventListener('input', handleCommentInput);
 
         submitBtn.addEventListener('click', addFormErrors);
 
     </script>
+    <noscript>To toggle the themes and to have a usable form, JavaScript must be activated.</noscript>
 </body>
 
 </html>
