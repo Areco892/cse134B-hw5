@@ -30,7 +30,7 @@ function changeLDTheme() {
     /* Check for light and dark settings */
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    lightDarkBtn.textContent = isDark ? 'Light' : 'Dark';
+    lightDarkBtn.textContent = isDark ? 'Dark' : 'Light';
     localStorage.setItem('theme', isDark ? 'light' : 'dark');
 }
 
@@ -54,4 +54,5 @@ function customTheme() {
         font: textFont
     };
     localStorage.setItem('theme', JSON.stringify(custom));
+    themeForm.classList.add('hidden');
 }

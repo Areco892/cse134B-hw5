@@ -152,7 +152,7 @@
         <button id="theme-toggle" aria-label="Toggle dark mode">Theme</button>
 
         <form id="theme-form" class="hidden">
-            <button id="light-dark" type="button">Dark</button>
+            <button id="light-dark" type="button">Light/Dark</button>
 
             <label for="background-color">Background Color: </label>
             <input id="background-color" name="background-color" type="color">
@@ -186,20 +186,20 @@
         <h2>Contact Form</h2>
         <form action="https://httpbin.org/post" method="post">
 
-            <label for="name">Name*</label>
+            <label for="name">Name<span aria-hidden="true">*</span></label>
             <input id="name" name="name" type="text" placeholder="Enter your full name" minlength="3" maxlength="50"
-                pattern="[A-Za-z ]+" title="Name should only contain letters." autocomplete="name" aria-required="true"
+                pattern="[A-Za-z ]+" title="Name should only contain letters." autocomplete="name"
                 aria-describedby="info-msg" required>
 
-            <label for="email">Email*</label>
+            <label for="email">Email<span aria-hidden="true">*</span></label>
             <input id="email" name="email" type="email" placeholder="Enter your email"
-                pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" title="Email should have proper pattern, e.g contain @ symbol."
-                minlength="5" maxlength="100" autocomplete="email" aria-required="true" aria-describedby="info-msg"
-                required>
+                pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                title="Email should have proper pattern, for example contain @ symbol." minlength="5" maxlength="100"
+                autocomplete="email" aria-describedby="info-msg" required>
 
-            <label for="comment">Comments*</label>
+            <label for="comment">Comments<span aria-hidden="true">*</span></label>
             <textarea id="comment" name="comment" placeholder="Enter your message (10-250 characters)" minlength="10"
-                maxlength="251" aria-required="true" aria-describedby="info-msg" required></textarea>
+                maxlength="251" aria-describedby="info-msg" required></textarea>
 
             <input id="form-errors" name="form-errors" value="" hidden>
 
@@ -277,10 +277,10 @@
             let message = '';
             switch (input.id) {
                 case 'name':
-                    message = "Enter your full name (only letters, spaces, hyphens, apostrophes are accepted). Names must not exceed 50 characters.";
+                    message = "Name should only have letters, spaces, hyphens, apostrophes. Names must not exceed 50 characters.";
                     break;
                 case 'email':
-                    message = "Enter a valid email. Email should have proper pattern, e.g contain @ symbol. Email must not exceed 100 characters. For example, name@email.com.";
+                    message = "Enter a valid email. Email should have proper pattern, for example contain @ symbol. Email must not exceed 100 characters. For example, name@email.com.";
                     break;
                 case 'comment':
                     message = "Enter your message here. Max characters: 250 characters.";
