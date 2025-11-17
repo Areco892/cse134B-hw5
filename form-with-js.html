@@ -186,20 +186,20 @@
         <h2>Contact Form</h2>
         <form action="https://httpbin.org/post" method="post">
 
-            <label for="name">Name<span aria-hidden="required">*</span></label>
+            <label for="name">Name*</label>
             <input id="name" name="name" type="text" placeholder="Enter your full name" minlength="3" maxlength="50"
                 pattern="[A-Za-z ]+" title="Name should only contain letters." autocomplete="name" aria-required="true"
                 aria-describedby="info-msg" required>
 
-            <label for="email">Email<span aria-hidden="required">*</label>
+            <label for="email">Email*</label>
             <input id="email" name="email" type="email" placeholder="Enter your email"
                 pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" title="Email should have proper pattern, e.g contain @ symbol."
                 minlength="5" maxlength="100" autocomplete="email" aria-required="true" aria-describedby="info-msg"
                 required>
 
-            <label for="comment">Comments<span aria-hidden="required">*</label>
-            <textarea id="comment" name="comment" type="text" placeholder="Enter your message (10-250 characters)"
-                minlength="10" , maxlength="251" aria-required="true" aria-describedby="info-msg" required></textarea>
+            <label for="comment">Comments*</label>
+            <textarea id="comment" name="comment" placeholder="Enter your message (10-250 characters)" minlength="10"
+                maxlength="251" aria-required="true" aria-describedby="info-msg" required></textarea>
 
             <input id="form-errors" name="form-errors" value="" hidden>
 
