@@ -137,7 +137,29 @@
 
     <header>
         <h1>Alexander Huang</h1>
-        <button id="theme-toggle" aria-label="Toggle dark mode">Light</button>
+        <button id="theme-toggle" aria-label="Toggle dark mode">Theme</button>
+
+        <form id="theme-form" class="hidden">
+            <button id="light-dark" type="button">Dark</button>
+
+            <label for="background-color">Background Color: </label>
+            <input id="background-color" name="background-color" type="color">
+
+            <label for="text-color">Text Color: </label>
+            <input id="text-color" name="text-color" type="color">
+
+            <label for="text-font">Text Font: </label>
+            <select id="text-font" name="text-font">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier">Courier</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+            </select>
+
+            <button id="theme-pick" type="button">Apply</button>
+        </form>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>

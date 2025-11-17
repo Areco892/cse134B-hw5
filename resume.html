@@ -8,7 +8,7 @@
     <link rel="icon" href="img/favicon.png" type="image/png">
     <style>
         [data-theme="dark"] #theme-image {
-            content: url("img/resume\ -\ dark\ mode.png")
+            content: url("img/resume-darkmode.png")
         }
 
         main {
@@ -58,19 +58,35 @@
 
         }
     </style>
-    <script>
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        }
-    </script>
 </head>
 
 <body>
 
     <header>
         <h1>Alexander Huang</h1>
-        <button id="theme-toggle" aria-label="Toggle dark mode">Light</button>
+        <button id="theme-toggle" aria-label="Toggle dark mode">Theme</button>
+
+        <form id="theme-form" class="hidden">
+            <button id="light-dark" type="button">Dark</button>
+
+            <label for="background-color">Background Color: </label>
+            <input id="background-color" name="background-color" type="color">
+
+            <label for="text-color">Text Color: </label>
+            <input id="text-color" name="text-color" type="color">
+
+            <label for="text-font">Text Font: </label>
+            <select id="text-font" name="text-font">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier">Courier</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+            </select>
+
+            <button id="theme-pick" type="button">Apply</button>
+        </form>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -85,8 +101,8 @@
     <main>
         <h1>Resume</h1>
         <picture>
-            <source srcset="img/resume - light mode.png 800w" sizes="100vw" type="image/jpeg">
-            <img id="theme-image" src="img/resume - light mode.png"
+            <source srcset="img/resume-lightmode.png 800w" sizes="100vw" type="image/jpeg">
+            <img id="theme-image" src="img/resume-lightmode.png"
                 alt="Alexander's resume page with a description, education section, project section, and technical skill section.">
         </picture>
         <button>Download</button><br>
