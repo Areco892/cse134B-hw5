@@ -277,7 +277,7 @@
             let message = '';
             switch (input.id) {
                 case 'name':
-                    message = "Name should only have letters, spaces, hyphens, apostrophes. Names must not exceed 50 characters.";
+                    message = "Name should only have letters and spaces. Names must not exceed 50 characters.";
                     break;
                 case 'email':
                     message = "Enter a valid email. Email should have proper pattern, for example contain @ symbol. Email must not exceed 100 characters. For example, name@email.com.";
@@ -317,7 +317,7 @@
                 nameInput.classList = [];
                 nameInput.classList.add('flash');
                 setTimeout(() => nameInput.classList.remove('flash'), 500);
-                showTemporaryError("Name can only contain letters, spaces, hyphens, or apostrophes.");
+                showTemporaryError("Name can only contain letters and spaces");
             }
             else {
                 nameInput.classList = [];
@@ -366,7 +366,7 @@
                 commentInput.value = value.slice(0, -1);
                 commentInput.classList.add('flash');
                 setTimeout(() => commentInput.classList.remove('flash'), 500);
-                showTemporaryError("You have exceed the maximum allowed number of characters.");
+                showTemporaryError("You have exceeded the maximum allowed number of characters.");
                 form_errors.push("In comment field, the user exceeded the 250 max character limit.")
             };
 
