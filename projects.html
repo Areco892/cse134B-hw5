@@ -128,7 +128,7 @@
 
     <main>
         <h2>Projects</h2>
-
+        <a href="project_panel.html">Project Panel</a>
         <button id="loadLocalBtn">Load Local</button>
         <button id="loadRemoteBtn">Load Remote</button>
         <projects-container id="projectsContainer"></projects-container>
@@ -138,10 +138,10 @@
     <script src="script.js"></script>
     <script src="data_loading.js"></script>
     <script>
-        document.getElementById('loadLocalBtn').addEventListener('click', getLocalData);
-        document.getElementById('loadRemoteBtn').addEventListener('click', getRemoteData);
+        document.getElementById('loadLocalBtn').addEventListener('click', loadLocalData);
+        document.getElementById('loadRemoteBtn').addEventListener('click', loadRemoteData);
 
-        function getLocalData() {
+        function loadLocalData() {
             const localData = JSON.parse(localStorage.getItem('projects'));
             if (localData) {
                 displayData(localData);
@@ -150,7 +150,7 @@
             }
         }
 
-        function getRemoteData() {
+        function loadRemoteData() {
             fetch('https://api.jsonbin.io/v3/b/69232b81d0ea881f40fb271b')
                 .then(response => response.json())
                 .then(result => {

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projects Panel</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <style>
+        main {
+            padding: 7rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            gap: 1rem;
+
+            h2 {
+                width: 100%;
+                font-size: 3rem;
+                padding: 1rem;
+            }
+
+            #existingProjects {
+                display: flex;
+                flex-direction: column;
+                border: var(--border);
+                border-radius: var(--border-radius);
+                gap: 1rem;
+                padding: 1rem;
+                width: clamp(25rem, 30vw, 100%);
+
+                h3 {
+                    font-size: 1.5rem;
+                }
+
+                project {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    flex-basis: 1;
+                    margin: 1rem;
+
+                    h4 {
+                        flex: 1;
+                        text-align: start;
+                    }
+                }
+
+                >button {
+                    width: 50%;
+                    align-self: center;
+                }
+            }
+
+            form {
+                border: var(--border);
+                border-radius: var(--border-radius);
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                width: 25rem;
+                justify-self: center;
+
+                label {
+                    text-align: start;
+                }
+            }
+        }
+    </style>
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === "light" || savedTheme === "dark") {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+            const custom = JSON.parse(savedTheme);
+            document.documentElement.style.setProperty('--custom-bg-color', custom.bg);
+            document.documentElement.style.setProperty('--custom-text-color', custom.text);
+            document.documentElement.style.setProperty('--custom-text-font', custom.font);
+            document.documentElement.classList.add("custom-theme");
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <header>
+        <h1>Alexander Huang</h1>
+        <button id="theme-toggle" aria-label="Toggle dark mode">Theme</button>
+
+        <form id="theme-form" class="hidden">
+            <button id="light-dark" type="button">Light/Dark</button>
+
+            <label for="background-color">Background Color: </label>
+            <input id="background-color" name="background-color" type="color">
+
+            <label for="text-color">Text Color: </label>
+            <input id="text-color" name="text-color" type="color">
+
+            <label for="text-font">Text Font: </label>
+            <select id="text-font" name="text-font">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier">Courier</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+            </select>
+
+            <button id="theme-pick" type="button">Apply</button>
+        </form>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <h2>Projects Panel</h2>
+
+        <section id="existingProjects">
+            <h3>Projects Saved on Local</h3>
+            <local-projects id="localProjects"></local-projects>
+            <button onclick="addProject()" type="button">Add New Project to Local</button>
+            <h3>Projects Saved on Remote</h3>
+            <remote-projects id="remoteProjects"></remote-projects>
+            <button id="addRemoteProject" type="button">Add New Project to Remote</button>
+        </section>
+
+        <form id="projectForm">
+            <h3>Create/Update Projects</h3>
+
+            <input type="hidden" id="projectID" name="projectID" value="">
+
+            <label for="title">Title </label>
+            <input id="title" type="text" name="title">
+
+            <label for="src">Image Source </label>
+            <input id="src" type="text" name="src">
+
+            <label for="alt">Image Alt Text</label>
+            <input id="alt" type="text" name="alt">
+
+            <label for="description">Description</label>
+            <input id="description" type="text" name="description">
+
+            <label for="link">Link</label>
+            <input id="link" type="text" name="link">
+
+            <button id="saveBtn" type="button">Save Project</button>
+
+        </form>
+
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const form = document.getElementById("projectForm");
+        const localProjects = document.getElementById("localProjects");
+        const remoteProjects = document.getElementById("remoteProjects");
+        const projectID = document.getElementById("projectID");
+        const saveBtn = document.getElementById("saveBtn")
+
+        loadProjects();
+
+        saveBtn.addEventListener("click", projectCreateUpdate)
+
+        function projectCreateUpdate() {
+            const project = {
+                title: form.title.value,
+                src: form.src.value,
+                alt: form.alt.value,
+                description: form.description.value,
+                link: form.link.value
+            };
+            if (projectID.value !== "") {
+                updateProject(projectID.value, project);
+            } else {
+                createProject(project);
+            }
+        };
+
+        function loadProjects() {
+            const localData = JSON.parse(localStorage.getItem('projects'));
+            if (localData) {
+                displayData(localData);
+            } else {
+                console.log('No data in localStorage.');
+            }
+        }
+
+        function getRemoteData() {
+            fetch('https://api.jsonbin.io/v3/b/69232b81d0ea881f40fb271b')
+                .then(response => response.json())
+                .then(result => {
+                    const remoteData = result.record;
+                    displayData(remoteData);
+                })
+                .catch(error => {
+                    console.error('Error fetching remote data: ', error)
+                });
+        }
+
+        function displayData(data) {
+            const projectList = document.getElementById('localProjects');
+            projectList.innerHTML = '';
+
+            data.forEach((project, index) => {
+                const projectCard = document.createElement('project');
+                projectCard.innerHTML = `
+                    <h4>${project.title}</h4>
+                    <action-buttons>
+                        <button onclick="editProject(${index})">Edit</button>
+                        <button onclick="deleteProject(${index})">Delete</button>     
+                    <\action-buttons>
+                `;
+                localProjects.appendChild(projectCard);
+            });
+        }
+
+        function createProject(newProject) {
+            const projects = JSON.parse(localStorage.getItem("projects")) || [];
+            projects.push(newProject);
+            localStorage.setItem("projects", JSON.stringify(projects));
+
+            loadProjects();
+        }
+
+        function updateProject(index, project) {
+            const localProjects = JSON.parse(localStorage.getItem("projects"));
+            localProjects[index] = project;
+            localStorage.setItem("projects", JSON.stringify(localProjects));
+
+            loadProjects();
+        }
+
+        window.addProject = function () {
+            const localProjects = JSON.parse(localStorage.getItem("projects"));
+
+            form.title.value = "";
+            form.src.value = "";
+            form.alt.value = "";
+            form.description.value = "";
+            form.link.value = "";
+            projectID.value = "";
+        }
+
+        window.editProject = function (index) {
+            const localProjects = JSON.parse(localStorage.getItem("projects"));
+            const project = localProjects[index];
+
+            form.title.value = project.title;
+            form.src.value = project.src;
+            form.alt.value = project.alt;
+            form.description.value = project.description;
+            form.link.value = project.link;
+            projectID.value = index;
+        }
+
+        window.deleteProject = function (index) {
+            const localProjects = JSON.parse(localStorage.getItem("projects"));
+            localProjects.splice(index, 1);
+            localStorage.setItem("projects", JSON.stringify(localProjects));
+
+            loadProjects();
+        }
+
+    </script>
+
+    <noscript>To toggle the themes, JavaScript must be activated.</noscript>
+</body>
+
+
+</html>
