@@ -128,25 +128,55 @@
 
     <main>
         <h2>Projects</h2>
-        <projects-container id="projectsContainer">
-            <project-card title='Personal Portfolio' , src='../img/project1-400.png' ,
-                alt="The front page of Alexander's personal portfolio website." ,
-                description='This website showcases my work using semantic HTML and accessible design.' ,
-                link='/projects/portfolio.html'></project-card>
-            <project-card title='Math Game' , src='../img/project2-400.png' ,
-                alt='The game screen of a math game website that quizzes students on highschool math topics, like linear equations.'
-                ,
-                description="An educational website game that quizzes students on highschool math topics, like linear equations."
-                , link='/projects/game.html'></project-card>
-            <project-card title='Classifier' , src='../img/project3-400.png' ,
-                alt='A display of one of the datapoints, the digit 9, from the MNIST dataset.' ,
-                description="A simple kNN classifier that is able to classify MNIST digits with a 95% accuracy rate." ,
-                link='/projects/classifier.html'></project-card>
-        </projects-container>
+
+        <button id="loadLocalBtn">Load Local</button>
+        <button id="loadRemoteBtn">Load Remote</button>
+        <projects-container id="projectsContainer"></projects-container>
+
     </main>
 
     <script src="script.js"></script>
+    <script src="data_loading.js"></script>
+    <script>
+        document.getElementById('loadLocalBtn').addEventListener('click', getLocalData);
+        document.getElementById('loadRemoteBtn').addEventListener('click', getRemoteData);
 
+        function getLocalData() {
+            const localData = JSON.parse(localStorage.getItem('projects'));
+            if (localData) {
+                displayData(localData);
+            } else {
+                console.log('No data in localStorage.');
+            }
+        }
+
+        function getRemoteData() {
+            fetch('https://api.jsonbin.io/v3/b/69232b81d0ea881f40fb271b')
+                .then(response => response.json())
+                .then(result => {
+                    const remoteData = result.record;
+                    displayData(remoteData);
+                })
+                .catch(error => {
+                    console.error('Error fetching remote data: ', error)
+                });
+        }
+
+        function displayData(data) {
+            const projectsContainer = document.getElementById('projectsContainer');
+            projectsContainer.innerHTML = '';
+
+            data.forEach(project => {
+                const projectCard = document.createElement('project-card');
+                projectCard.setAttribute('src', project.src);
+                projectCard.setAttribute('title', project.title);
+                projectCard.setAttribute('alt', project.alt);
+                projectCard.setAttribute('description', project.description);
+                projectCard.setAttribute('link', project.link);
+                projectsContainer.appendChild(projectCard);
+            });
+        }
+    </script>
     <noscript>To toggle the themes, JavaScript must be activated.</noscript>
 </body>
 
