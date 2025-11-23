@@ -56,3 +56,18 @@ function customTheme() {
     localStorage.setItem('theme', JSON.stringify(custom));
     themeForm.classList.add('hidden');
 }
+
+class ProjectCard extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+            <h2>${this.getAttribute("title")}</h2>
+            <picture>
+                <img src="${this.getAttribute("src")}" alt="${this.getAttribute("alt")}">
+            </picture>
+            <p>${this.getAttribute("description")}<p>
+            <a href="${this.getAttribute("link")}">Read More</a>
+        `;
+    }
+}
+
+customElements.define("project-card", ProjectCard);

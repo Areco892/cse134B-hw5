@@ -9,14 +9,18 @@
     <style>
         main {
             margin: 5rem 1rem;
+            text-align: center;
 
             h2 {
-                text-align: center;
                 font-size: 3rem;
                 padding: 1rem;
             }
 
-            .projects {
+            button {
+                margin-bottom: 1rem;
+            }
+
+            projects-container {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -25,20 +29,19 @@
 
                 project-card {
                     display: flex;
-                    flex-direction: column;
-                    align-items: center;
+                    flex-direction: row;
+                    flex-wrap: wrap;
                     gap: 1rem;
                     border: var(--border);
                     border-radius: var(--border-radius);
-                    padding: 1rem;
+                    padding: 2rem;
                     width: clamp(40rem, 50vw, 50rem);
                     justify-content: center;
 
-                    h3 {
+                    h2 {
                         font-size: 2rem;
-                        text-align: center;
+                        width: 100%;
                     }
-
 
                     picture {
                         display: flex;
@@ -53,8 +56,18 @@
                     }
 
                     p {
-                        font-size: var(--p-font-size);
-                        text-align: center;
+                        font-size: 1rem;
+                        width: 100%;
+                    }
+
+                    a {
+                        border: var(--border);
+                        border-radius: var(--border-radius);
+                        padding: 0.5rem;
+                        background-color: var(--bg-color);
+                        text-decoration: none;
+                        color: var(--text-color);
+                        width: clamp(10rem, 100%, 15rem);
                     }
                 }
             }
@@ -115,72 +128,25 @@
 
     <main>
         <h2>Projects</h2>
-
-        <section class="projects">
-            <project-card>
-                <h3>Personal Portfolio</h3>
-                <picture>
-                    <source srcset="../img/project1-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
-
-                    <source srcset="../img/project1-400.png 400w,
-                        ../img/project1-800.png 800w,
-                        ../img/project1-1200.png 1200w
-                      " sizes="(max-width: 400px) 400px,
-                               (max-width: 800px) 800px,
-                               1200px
-                      " type="image/png">
-                    <img src="../img/project1-400.png" alt="The front page of Alexander's personal portfolio website.">
-                </picture>
-                <p>This website showcases my work using semantic HTML and accessible design. </p>
-
-            </project-card>
-
-            <project-card>
-                <h3>Math Game</h3>
-                <picture>
-                    <source srcset="../img/project2-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
-
-                    <source srcset="../img/project2-400.png 400w,
-                        ../img/project2-800.png 800w,
-                        ../img/project2-1200.png 1200w
-                      " sizes="(max-width: 400px) 400px,
-                               (max-width: 800px) 800px,
-                               1200px
-                      " type="image/png">
-                    <img src="../img/project2-400.png"
-                        alt="The game screen of a math game website that quizzes students on highschool math topics, like linear equations.">
-                </picture>
-                <p>An educational website game that quizzes students on highschool math topics, like linear
-                    equations.</p>
-            </project-card>
-
-            <project-card>
-                <h3>Classifier</h3>
-                <picture>
-                    <source srcset="../img/project3-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
-
-                    <source srcset="../img/project3-400.png 400w,
-                        ../img/project3-800.png 800w,
-                        ../img/project3-1200.png 1200w
-                      " sizes="(max-width: 400px) 400px,
-                               (max-width: 800px) 800px,
-                               1200px
-                      " type="image/png">
-                    <img src="../img/project3-400.png"
-                        alt="A display of one of the datapoints, the digit 9, from the MNIST dataset.">
-                </picture>
-                <p>A simple kNN classifier that is able to classify MNIST digits with a 95% accuracy rate.</p>
-            </project-card>
-
-            <project-card>
-                <h3>In Construction...</h3>
-                <p>Stay Tuned for Future Projects! </p>
-            </project-card>
-        </section>
-
+        <projects-container id="projectsContainer">
+            <project-card title='Personal Portfolio' , src='../img/project1-400.png' ,
+                alt="The front page of Alexander's personal portfolio website." ,
+                description='This website showcases my work using semantic HTML and accessible design.' ,
+                link='/projects/portfolio.html'></project-card>
+            <project-card title='Math Game' , src='../img/project2-400.png' ,
+                alt='The game screen of a math game website that quizzes students on highschool math topics, like linear equations.'
+                ,
+                description="An educational website game that quizzes students on highschool math topics, like linear equations."
+                , link='/projects/game.html'></project-card>
+            <project-card title='Classifier' , src='../img/project3-400.png' ,
+                alt='A display of one of the datapoints, the digit 9, from the MNIST dataset.' ,
+                description="A simple kNN classifier that is able to classify MNIST digits with a 95% accuracy rate." ,
+                link='/projects/classifier.html'></project-card>
+        </projects-container>
     </main>
 
     <script src="script.js"></script>
+
     <noscript>To toggle the themes, JavaScript must be activated.</noscript>
 </body>
 
