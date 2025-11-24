@@ -29,6 +29,7 @@
                 background-color: var(--bg-color);
                 color: var(--text-color);
                 padding: 0.5rem;
+                font-family: var(--text-font);
             }
 
             button:hover {
@@ -71,15 +72,23 @@
             form {
                 border: var(--border);
                 border-radius: var(--border-radius);
-                padding: 1rem;
+                padding: 2rem;
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
-                width: 25rem;
+                width: 30rem;
                 justify-self: center;
 
                 label {
                     text-align: start;
+                }
+
+                input {
+                    background-color: var(--bg-color);
+                    border: var(--border);
+                    border-radius: var(--border-radius);
+                    color: var(--text-color);
+                    padding: 0.5rem;
                 }
             }
         }
@@ -143,7 +152,7 @@
         <section id="existingProjects">
             <h3>Projects Saved on Local</h3>
             <local-projects id="localProjects"></local-projects>
-            <button onclick="addProject()" type="button">Add New Project to Local</button>
+            <button id="createBtn" type="button">Add New Project to Local</button>
         </section>
 
         <form id="projectForm">
@@ -178,12 +187,23 @@
         const form = document.getElementById("projectForm");
         const localProjects = document.getElementById("localProjects");
         const projectID = document.getElementById("projectID");
-        const saveBtn = document.getElementById("saveBtn")
+        const createBtn = document.getElementById("createBtn");
+        const saveBtn = document.getElementById("saveBtn");
 
+        /**
+         * Initial render of the existing projects 
+         */
         loadProjects();
 
-        saveBtn.addEventListener("click", projectCreateUpdate)
+        /**
+         * Attach event listener to the buttons on project panel 
+         */
+        createBtn.addEventListener('click', addProject)
+        saveBtn.addEventListener('click', projectCreateUpdate)
 
+        /**
+         * Save project button from the form (used to create or update a project) 
+         */
         function projectCreateUpdate() {
             const project = {
                 title: form.title.value,
@@ -199,6 +219,9 @@
             }
         };
 
+        /**
+         * Render the projects that currently exists on local storage 
+         */
         function loadProjects() {
             const localData = JSON.parse(localStorage.getItem('projects'));
             if (localData) {
@@ -207,7 +230,6 @@
                 console.log('No data in localStorage.');
             }
         }
-
         function displayData(data) {
             const projectList = document.getElementById('localProjects');
             projectList.innerHTML = '';
@@ -225,6 +247,9 @@
             });
         }
 
+        /**
+         * Create a new project
+         */
         function createProject(newProject) {
             const projects = JSON.parse(localStorage.getItem("projects")) || [];
             projects.push(newProject);
@@ -233,6 +258,9 @@
             loadProjects();
         }
 
+        /**
+         * Update an existing project 
+         */
         function updateProject(index, project) {
             const localProjects = JSON.parse(localStorage.getItem("projects"));
             localProjects[index] = project;
@@ -241,7 +269,10 @@
             loadProjects();
         }
 
-        window.addProject = function () {
+        /**
+         * Clear the form and register the user's input to create a new project card 
+         */
+        function addProject() {
             const localProjects = JSON.parse(localStorage.getItem("projects"));
 
             form.title.value = "";
@@ -252,6 +283,9 @@
             projectID.value = "";
         }
 
+        /**
+         * Fill the form with the data of the existing project card 
+         */
         window.editProject = function (index) {
             const localProjects = JSON.parse(localStorage.getItem("projects"));
             const project = localProjects[index];
@@ -264,6 +298,9 @@
             projectID.value = index;
         }
 
+        /**
+         * Delete a project from local storage 
+         */
         window.deleteProject = function (index) {
             const localProjects = JSON.parse(localStorage.getItem("projects"));
             localProjects.splice(index, 1);

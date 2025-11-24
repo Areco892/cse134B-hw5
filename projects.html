@@ -25,6 +25,7 @@
                 color: var(--text-color);
                 padding: 1rem;
                 font-size: var(--p-font-size);
+                font-family: var(--text-font);
                 margin-bottom: 1rem;
             }
 
@@ -148,11 +149,28 @@
     </main>
 
     <script src="script.js"></script>
-    <script src="data_loading.js"></script>
     <script>
+        /**
+         * Set project details to localStorage only if the data doesn't already exists
+         */
+        const projects_data = [
+            { title: 'Classifier', src: '../img/project3-400.png', alt: 'A display of one of the datapoints, the digit 9, from the MNIST dataset.', description: "A simple kNN classifier that is able to classify MNIST digits with a 95% accuracy rate.", link: '/projects/classifier.html' },
+            { title: 'Personal Portfolio', src: '../img/project1-400.png', alt: "The front page of Alexander's personal portfolio website.", description: 'This website showcases my work using semantic HTML and accessible design.', link: '/projects/portfolio.html' },
+            { title: 'Math Game', src: '../img/project2-400.png', alt: 'The game screen of a math game website that quizzes students on highschool math topics, like linear equations.', description: "An educational website game that quizzes students on highschool math topics, like linear equations.", link: '/projects/game.html' }
+        ]
+        if (localStorage.getItem('projects') == "[]") {
+            localStorage.setItem('projects', JSON.stringify(projects_data));
+        }
+
+        /**
+         * Get the loadLocal and loadRemote buttons and attack event listeners for click
+         */
         document.getElementById('loadLocalBtn').addEventListener('click', loadLocalData);
         document.getElementById('loadRemoteBtn').addEventListener('click', loadRemoteData);
 
+        /**
+         * Retrieve the data from local storage and display it on the screen 
+         */
         function loadLocalData() {
             const localData = JSON.parse(localStorage.getItem('projects'));
             if (localData) {
@@ -162,11 +180,14 @@
             }
         }
 
+        /**
+         * Retrieve the data from cloud storage and display it on the screen 
+         */
         function loadRemoteData() {
-            fetch('https://api.jsonbin.io/v3/b/69232b81d0ea881f40fb271b')
+            fetch('https://my-json-server.typicode.com/Areco892/cse134B-hw5/db')
                 .then(response => response.json())
                 .then(result => {
-                    const remoteData = result.record;
+                    const remoteData = result.projects;
                     displayData(remoteData);
                 })
                 .catch(error => {
@@ -174,6 +195,9 @@
                 });
         }
 
+        /**
+         * Helper function to display the data once obtained from either local or remote 
+         */
         function displayData(data) {
             const projectsContainer = document.getElementById('projectsContainer');
             projectsContainer.innerHTML = '';
