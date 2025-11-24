@@ -22,6 +22,20 @@
                 padding: 1rem;
             }
 
+            button {
+                text-decoration: none;
+                border: var(--border);
+                border-radius: var(--border-radius);
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                padding: 0.5rem;
+            }
+
+            button:hover {
+                cursor: pointer;
+                background-color: #ffafaf;
+            }
+
             #existingProjects {
                 display: flex;
                 flex-direction: column;
@@ -130,9 +144,6 @@
             <h3>Projects Saved on Local</h3>
             <local-projects id="localProjects"></local-projects>
             <button onclick="addProject()" type="button">Add New Project to Local</button>
-            <h3>Projects Saved on Remote</h3>
-            <remote-projects id="remoteProjects"></remote-projects>
-            <button id="addRemoteProject" type="button">Add New Project to Remote</button>
         </section>
 
         <form id="projectForm">
@@ -166,7 +177,6 @@
     <script>
         const form = document.getElementById("projectForm");
         const localProjects = document.getElementById("localProjects");
-        const remoteProjects = document.getElementById("remoteProjects");
         const projectID = document.getElementById("projectID");
         const saveBtn = document.getElementById("saveBtn")
 
@@ -198,18 +208,6 @@
             }
         }
 
-        function getRemoteData() {
-            fetch('https://api.jsonbin.io/v3/b/69232b81d0ea881f40fb271b')
-                .then(response => response.json())
-                .then(result => {
-                    const remoteData = result.record;
-                    displayData(remoteData);
-                })
-                .catch(error => {
-                    console.error('Error fetching remote data: ', error)
-                });
-        }
-
         function displayData(data) {
             const projectList = document.getElementById('localProjects');
             projectList.innerHTML = '';
@@ -220,8 +218,8 @@
                     <h4>${project.title}</h4>
                     <action-buttons>
                         <button onclick="editProject(${index})">Edit</button>
-                        <button onclick="deleteProject(${index})">Delete</button>     
-                    <\action-buttons>
+                        <button onclick="deleteProject(${index})">Delete</button> 
+                    </action-buttons>
                 `;
                 localProjects.appendChild(projectCard);
             });
