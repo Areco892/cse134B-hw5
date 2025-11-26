@@ -154,9 +154,9 @@
          * Set project details to localStorage only if the data doesn't already exists
          */
         const projects_data = [
-            { title: 'Classifier', src: '../img/project3-400.png', alt: 'A display of one of the datapoints, the digit 9, from the MNIST dataset.', description: "A simple kNN classifier that is able to classify MNIST digits with a 95% accuracy rate.", link: '/projects/classifier.html' },
-            { title: 'Personal Portfolio', src: '../img/project1-400.png', alt: "The front page of Alexander's personal portfolio website.", description: 'This website showcases my work using semantic HTML and accessible design.', link: '/projects/portfolio.html' },
-            { title: 'Math Game', src: '../img/project2-400.png', alt: 'The game screen of a math game website that quizzes students on highschool math topics, like linear equations.', description: "An educational website game that quizzes students on highschool math topics, like linear equations.", link: '/projects/game.html' }
+            { title: 'Personal Portfolio', src: '../img/portfolio-400.png', alt: "The front page of Alexander's personal portfolio website.", description: 'This website showcases my work using semantic HTML and accessible design.', link: 'https://github.com/Areco892/cse134B-hw5' },
+            { title: 'Math Game', src: '../img/math_game-400.png', alt: 'The game screen of a math game website that quizzes students on highschool math topics, like linear equations.', description: "An educational website game that quizzes students on highschool math topics, like linear equations.", link: 'https://github.com/Areco892/cse-110-project-38' },
+            { title: 'Interactive Lemon', src: '../img/interactive_lemon-400.png', alt: 'An image of a whole lemon drawn in a computer.', description: "An interactive website that has a lemon which can be clicked on and also be moved around.", link: 'https://github.com/Areco892/110-lab1' },
         ]
         if (localStorage.getItem('projects') == "[]") {
             localStorage.setItem('projects', JSON.stringify(projects_data));
