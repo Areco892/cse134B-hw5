@@ -20,13 +20,6 @@
             "alt": "An image of a whole lemon drawn in a computer.",
             "description": "An interactive website that has a lemon which can be clicked on and also be moved around.",
             "link": "https://github.com/Areco892/110-lab1"
-        },
-        {
-            "title": "Lemon Clicker",
-            "src": "",
-            "alt": "The game screen of a lemon clicking game.",
-            "description": "A clicking game where the objective is to click on the lemons shown on the screen as fast as you can.",
-            "link": "https://github.com/Areco892/110-lab3"
         }
     ]
 }

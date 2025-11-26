@@ -23,10 +23,10 @@
                 border-radius: var(--border-radius);
                 background-color: var(--bg-color);
                 color: var(--text-color);
-                padding: 1rem;
                 font-size: var(--p-font-size);
                 font-family: var(--text-font);
                 margin-bottom: 1rem;
+                padding: 1rem;
             }
 
             button:hover {
@@ -39,50 +39,6 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 2rem;
-
-                project-card {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    gap: 1rem;
-                    border: var(--border);
-                    border-radius: var(--border-radius);
-                    padding: 2rem;
-                    width: clamp(40rem, 50vw, 50rem);
-                    justify-content: center;
-
-                    h2 {
-                        font-size: 2rem;
-                        width: 100%;
-                    }
-
-                    picture {
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: center;
-
-                        img {
-                            width: clamp(20rem, 25vw, 50rem);
-                            border: var(--border);
-                            border-radius: var(--border-radius);
-                        }
-                    }
-
-                    p {
-                        font-size: 1rem;
-                        width: 100%;
-                    }
-
-                    a {
-                        border: var(--border);
-                        border-radius: var(--border-radius);
-                        padding: 0.5rem;
-                        background-color: var(--bg-color);
-                        text-decoration: none;
-                        color: var(--text-color);
-                        width: clamp(10rem, 100%, 15rem);
-                    }
-                }
             }
         }
     </style>
@@ -154,9 +110,9 @@
          * Set project details to localStorage only if the data doesn't already exists
          */
         const projects_data = [
-            { title: 'Personal Portfolio', src: '../img/portfolio-400.png', alt: "The front page of Alexander's personal portfolio website.", description: 'This website showcases my work using semantic HTML and accessible design.', link: 'https://github.com/Areco892/cse134B-hw5' },
             { title: 'Math Game', src: '../img/math_game-400.png', alt: 'The game screen of a math game website that quizzes students on highschool math topics, like linear equations.', description: "An educational website game that quizzes students on highschool math topics, like linear equations.", link: 'https://github.com/Areco892/cse-110-project-38' },
             { title: 'Interactive Lemon', src: '../img/interactive_lemon-400.png', alt: 'An image of a whole lemon drawn in a computer.', description: "An interactive website that has a lemon which can be clicked on and also be moved around.", link: 'https://github.com/Areco892/110-lab1' },
+            { title: 'Personal Portfolio', src: '../img/portfolio-400.png', alt: "The front page of Alexander's personal portfolio website.", description: 'This website showcases my work using semantic HTML and accessible design.', link: 'https://github.com/Areco892/cse134B-hw5' }
         ]
         if (localStorage.getItem('projects') == "[]") {
             localStorage.setItem('projects', JSON.stringify(projects_data));

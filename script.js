@@ -58,14 +58,65 @@ function customTheme() {
 }
 
 class ProjectCard extends HTMLElement {
+
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
     connectedCallback() {
-        this.innerHTML = `
-            <h2>${this.getAttribute("title")}</h2>
-            <picture>
-                <img src="${this.getAttribute("src")}" alt="${this.getAttribute("alt")}">
-            </picture>
-            <p>${this.getAttribute("description")}<p>
-            <a href="${this.getAttribute("link")}">Read More</a>
+        this.shadowRoot.innerHTML = `
+        <style>
+            :host {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 1rem;
+                border: var(--border);
+                border-radius: var(--border-radius);
+                width: clamp(40rem, 50vw, 50rem);
+                justify-content: center;
+            } 
+                
+            h2 {
+                    font-size: 2rem;
+                    width: 100%;
+            }
+
+            picture {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            img {
+                    width: clamp(20rem, 25vw, 50rem);
+                    height: clamp(20rem, 25vw, 50rem);
+                    border: var(--border);
+                    border-radius: var(--border-radius);
+            }
+
+            p {
+                font-size: 1rem;
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            a {
+                border: var(--border);
+                border-radius: var(--border-radius);
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                padding: 1rem;
+                text-decoration: none;
+                margin-bottom: 1rem;
+            }
+        </style>
+        <h2>${this.getAttribute("title")}</h2>
+        <picture>
+            <img src="${this.getAttribute("src")}" alt="${this.getAttribute("alt")}">
+        </picture>
+        <p>${this.getAttribute("description")}</p>
+        <a href="${this.getAttribute("link")}">Read More</a>
         `;
     }
 }
