@@ -8,12 +8,13 @@
     <link rel="icon" href="img/favicon.png" type="image/png">
     <style>
         main {
-            margin: 5rem 1rem;
+            margin: 8rem 1rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
 
             h2 {
                 font-size: 3rem;
-                padding: 1rem;
             }
 
             a,
@@ -27,10 +28,27 @@
                 font-family: var(--text-font);
                 margin-bottom: 1rem;
                 padding: 1rem;
+                cursor: pointer;
             }
 
-            button:hover {
-                cursor: pointer;
+            projects-preview {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+
+                a {
+                    border: none;
+                    padding: 0;
+                }
+
+                img {
+                    width: 10rem;
+                    height: 10rem;
+                    border: var(--border);
+                    border-radius: var(--border-radius);
+                }
             }
 
             projects-container {
@@ -97,11 +115,13 @@
 
     <main>
         <h2>Projects</h2>
-        <a href="project_panel.html">Project Panel</a>
-        <button id="loadLocalBtn">Load Local</button>
-        <button id="loadRemoteBtn">Load Remote</button>
+        <button-controls>
+            <a href="project_panel.html">Project Panel</a>
+            <button id="loadLocalBtn">Load Local</button>
+            <button id="loadRemoteBtn">Load Remote</button>
+        </button-controls>
+        <projects-preview id="projectsPreview"></projects-preview>
         <projects-container id="projectsContainer"></projects-container>
-
     </main>
 
     <script src="script.js"></script>
@@ -155,18 +175,40 @@
          * Helper function to display the data once obtained from either local or remote 
          */
         function displayData(data) {
+            const projectsPreview = document.getElementById('projectsPreview')
             const projectsContainer = document.getElementById('projectsContainer');
-            projectsContainer.innerHTML = '';
+            projectsPreview.innerHTML = '';
+            projectsContainer.innerHTML = 'Click on a project to display!';
 
             data.forEach(project => {
-                const projectCard = document.createElement('project-card');
-                projectCard.setAttribute('src', project.src);
-                projectCard.setAttribute('title', project.title);
-                projectCard.setAttribute('alt', project.alt);
-                projectCard.setAttribute('description', project.description);
-                projectCard.setAttribute('link', project.link);
-                projectsContainer.appendChild(projectCard);
+                const a = document.createElement('a');
+                a.setAttribute('href', "#");
+
+                const img = document.createElement('img');
+                img.setAttribute('src', project.src);
+                img.setAttribute('alt', project.alt);
+                img.setAttribute('title', project.title);
+                img.setAttribute('description', project.description);
+                img.setAttribute('link', project.link);
+
+                a.appendChild(img);
+                projectsPreview.appendChild(a);
+
+                a.addEventListener('click', updateView);
             });
+        }
+
+        function updateView(event) {
+            const project = event.target;
+
+            const projectCard = document.createElement('project-card');
+            projectsContainer.innerHTML = '';
+            projectCard.setAttribute('src', project.src);
+            projectCard.setAttribute('alt', project.alt);
+            projectCard.setAttribute('title', project.getAttribute("title"));
+            projectCard.setAttribute('description', project.getAttribute("description"));
+            projectCard.setAttribute('link', project.getAttribute("link"));
+            projectsContainer.appendChild(projectCard);
         }
     </script>
     <noscript>To toggle the themes, JavaScript must be activated.</noscript>

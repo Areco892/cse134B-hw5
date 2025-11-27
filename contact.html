@@ -5,20 +5,27 @@
     <meta charset="UTF-8">
     <title>Contact Form</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
 
     <style>
         main {
-            padding: 7rem;
+            margin: 8rem 1rem;
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
-            line-height: 1.5rem;
-            gap: 3rem;
+            gap: 2rem;
 
-            >h2 {
-                font-size: 3rem;
+            h2 {
+                font-size: var(--h2-font-size);
+            }
+
+            h3 {
+                font-size: var(--h3-font-size);
+                text-align: center;
+            }
+
+            p {
+                font-size: var(--p-font-size);
             }
 
             .socials {
@@ -32,9 +39,7 @@
                 border-radius: var(--border-radius);
                 width: clamp(35rem, 100%, 45rem);
 
-                p {
-                    font-size: var(--p-font-size);
-                }
+
 
                 button-group {
                     display: flex;
@@ -51,7 +56,6 @@
                     border: var(--border);
                     border-radius: var(--border-radius);
                     text-decoration: none;
-                    width: 25%;
                     align-self: center;
                 }
 
@@ -68,13 +72,8 @@
                 width: clamp(35rem, 100%, 45rem);
                 display: flex;
                 flex-direction: column;
-                justify-self: center;
                 padding: 2rem;
                 gap: 0.5rem;
-
-                h2 {
-                    text-align: center;
-                }
 
                 input,
                 textarea {
@@ -175,9 +174,6 @@
                     border-radius: var(--border-radius);
                     background-color: var(--bg-color);
                     color: var(--color);
-                }
-
-                button:hover {
                     cursor: pointer;
                 }
 
@@ -235,13 +231,13 @@
             </ul>
         </nav>
     </header>
-
+    <hr>
     <main>
         <h2>Contact</h2>
 
 
         <section class="socials">
-            <h2>Get in Touch</h2>
+            <h3>Get in Touch</h3>
             <button-group><a href="https://www.linkedin.com/in/alexander-huang-">LinkedIn</a>
                 <a href="https://github.com/Areco892">GitHub</a>
             </button-group>
@@ -250,7 +246,7 @@
         </section>
 
         <form action="https://httpbin.org/post" method="post">
-            <h2>Contact Form</h2>
+            <h3>Contact Form</h3>
 
             <label for="name">Name<span aria-hidden="true">*</span></label>
             <input id="name" name="name" type="text" placeholder="Enter your full name" minlength="3" maxlength="50"

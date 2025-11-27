@@ -7,9 +7,9 @@
 :root {
     --border: 2px solid black;
     --border-radius: 2rem;
-    --p-font-size: clamp(1.2rem, 2rem - 1vw, 1.25rem);
-    --h2-font-size: clamp(2.5rem, 3rem - 1vw, 3rem);
-    --h3-font-size: clamp(2rem, 2.5rem - 1vw, 2.5rem);
+    --p-font-size: 1.25rem;
+    --h2-font-size: 3rem;
+    --h3-font-size: 1.5rem;
     --bg-color: #ffffff;
     --text-color: #000000;
     --text-font: Arial;

@@ -79,8 +79,8 @@ class ProjectCard extends HTMLElement {
             } 
                 
             h2 {
-                    font-size: 2rem;
-                    width: 100%;
+                font-size: 2rem;
+                width: 100%;
             }
 
             picture {
@@ -88,15 +88,17 @@ class ProjectCard extends HTMLElement {
                 flex-direction: row;
                 justify-content: center;
             }
+
             img {
-                    width: clamp(20rem, 25vw, 50rem);
-                    height: clamp(20rem, 25vw, 50rem);
-                    border: var(--border);
-                    border-radius: var(--border-radius);
+                width: clamp(20rem, 25vw, 50rem);
+                height: clamp(20rem, 25vw, 50rem);
+                border: var(--border);
+                border-radius: var(--border-radius);
+                object-fit: cover;
             }
 
             p {
-                font-size: 1rem;
+                font-size: var(--p-font-size);
                 width: 100%;
                 padding: 0 1rem;
             }
