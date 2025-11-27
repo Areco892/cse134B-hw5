@@ -17,7 +17,6 @@
                 font-size: 3rem;
             }
 
-            a,
             button {
                 text-decoration: none;
                 border: var(--border);
@@ -26,7 +25,7 @@
                 color: var(--text-color);
                 font-size: var(--p-font-size);
                 font-family: var(--text-font);
-                margin-bottom: 1rem;
+                margin: 1rem 0;
                 padding: 1rem;
                 cursor: pointer;
             }
@@ -37,6 +36,7 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 2rem;
+                margin: 2rem;
 
                 a {
                     border: none;
@@ -116,7 +116,6 @@
     <main>
         <h2>Projects</h2>
         <button-controls>
-            <a href="project_panel.html">Project Panel</a>
             <button id="loadLocalBtn">Load Local</button>
             <button id="loadRemoteBtn">Load Remote</button>
         </button-controls>
@@ -134,7 +133,7 @@
             { title: 'Interactive Lemon', src: '../img/interactive_lemon-400.png', alt: 'An image of a whole lemon drawn in a computer.', description: "An interactive website that has a lemon which can be clicked on and also be moved around.", link: 'https://github.com/Areco892/110-lab1' },
             { title: 'Personal Portfolio', src: '../img/portfolio-400.png', alt: "The front page of Alexander's personal portfolio website.", description: 'This website showcases my work using semantic HTML and accessible design.', link: 'https://github.com/Areco892/cse134B-hw5' }
         ]
-        if (localStorage.getItem('projects') == "[]") {
+        if (localStorage.getItem('projects') == "[]" || !localStorage.getItem('projects')) {
             localStorage.setItem('projects', JSON.stringify(projects_data));
         }
 
