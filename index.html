@@ -14,17 +14,7 @@
             justify-content: center;
             align-items: center;
             gap: 1rem;
-
-            section {
-                background-color: var(--bg-color);
-                padding: 0 2rem;
-
-                h2 {
-                    text-align: center;
-                    font-size: 3rem;
-                    padding: 1rem;
-                }
-            }
+            background-color: var(--bg-color);
 
             a {
                 border: var(--border);
@@ -34,17 +24,21 @@
                 padding: 1rem;
             }
 
-            .about-me {
+            #about-me {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
                 align-items: center;
                 justify-content: center;
                 gap: 2rem;
-                background-color: var(--bg-color);
+                padding: 0 2rem;
+                width: clamp(50rem, 100%, 75rem);
 
                 h2 {
                     width: 100%;
+                    text-align: center;
+                    font-size: 3rem;
+                    padding: 1rem;
                 }
 
                 img {
@@ -58,55 +52,80 @@
                 }
             }
 
-            h2 {
-                text-align: center;
-                font-size: var(--h2-font-size, 3vw);
-            }
-
-            .hobbies {
+            #hobbies-container {
                 display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: space-evenly;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
                 gap: 2rem;
-                background-color: var(--bg-color);
                 padding: 0;
+                width: clamp(25rem, 100%, 50rem);
+
+                #toggle-view {
+                    border: var(--border);
+                    border-radius: var(--border-radius);
+                    color: var(--text-color);
+                    font-size: var(--p-font-size);
+                    background: var(--bg-color);
+                    cursor: pointer;
+                    padding: 1rem;
+                }
 
                 h2 {
                     width: 100%;
+                    text-align: center;
+                    font-size: var(--h2-font-size);
                 }
 
-                article {
+                ul {
                     display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    border: var(--border);
-                    border-radius: var(--border-radius);
-                    padding: 2rem;
-                    width: clamp(25rem, 100vw, 40rem);
-                    background-color: var(--bg-color);
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                    list-style: none;
+                }
 
-                    h3 {
-                        font-size: var(--h3-font-size);
-                        padding: 1rem;
+                .hobbies.column {
+                    flex-direction: column;
+
+                    li {
+                        display: flex;
+
+                        .details {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-evenly;
+                            padding: 2rem;
+                        }
                     }
+                }
+
+                .hobbies li {
+                    display: block;
 
                     img {
-                        width: clamp(5rem, 50vw, 25rem);
+                        width: clamp(5rem, 50vw, 15rem);
+                        height: auto;
+                        aspect-ratio: 2/3;
+                        object-fit: cover;
+                        display: block;
                         border-radius: var(--border-radius);
                     }
 
-                    p {
-                        padding: 1rem;
-                        font-size: var(--p-font-size);
+                    .details {
+                        display: none;
+
+                        h3 {
+                            font-size: var(--h3-font-size);
+                        }
+
+                        p {
+                            font-size: var(--p-font-size);
+                        }
                     }
+
+
                 }
-
             }
-
         }
     </style>
     <script>
@@ -161,7 +180,7 @@
     <hr>
 
     <main>
-        <section class="about-me">
+        <section id="about-me">
             <h2>About Me</h2>
             <picture>
                 <source srcset="../img/sunset-400.jpg 400w" sizes="(max-width: 400px) 100vw" type="image/jpeg">
@@ -181,70 +200,81 @@
             </p>
         </section>
 
-        <section class="hobbies">
+        <section id="hobbies-container">
             <h2>Hobbies</h2>
-            <article>
-                <h3>Play Sports</h3>
-                <picture>
-                    <source srcset="../img/hobby1-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
+            <button id="toggle-view">Show/Hide Details</button>
 
-                    <source srcset="../img/hobby1-400.png 400w,
+            <ul class="hobbies">
+                <li>
+                    <picture>
+                        <source srcset="../img/hobby1-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
+
+                        <source srcset="../img/hobby1-400.png 400w,
                         ../img/hobby1-800.png 800w,
                         ../img/hobby1-1200.png 1200w
                       " sizes="(max-width: 400px) 400px,
                                (max-width: 800px) 800px,
                                1200px
                       " type="image/png">
-                    <img src="../img/hobby1-400.png"
-                        alt="A soccer ball, tennis ball, basketball, and football group together.">
-                </picture>
-                <p>
-                    Growing up I have always liked being active, so I will spend most of my free time playing
-                    sports. Among the sports I enjoy playing, as well as
-                    watching, are basketball, volleyball, and ping pong.</p>
-            </article>
+                        <img src="../img/hobby1-400.png"
+                            alt="A soccer ball, tennis ball, basketball, and football group together.">
+                    </picture>
+                    <div class="details">
+                        <h3>Play Sports</h3>
+                        <p>Growing up I have always liked being active, so I will spend most of my free time
+                            playing
+                            sports. Among the sports I enjoy playing, as well as
+                            watching, are basketball, volleyball, and ping pong.</p>
+                    </div>
+                </li>
 
-            <article>
-                <h3>Learn New Skills</h3>
-                <picture>
-                    <source srcset="../img/hobby2-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
+                <li>
 
-                    <source srcset="../img/hobby2-400.png 400w,
+                    <picture>
+                        <source srcset="../img/hobby2-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
+
+                        <source srcset="../img/hobby2-400.png 400w,
                         ../img/hobby2-800.png 800w,
                         ../img/hobby2-1200.png 1200w
                       " sizes="(max-width: 400px) 400px,
                                (max-width: 800px) 800px,
                                1200px
                       " type="image/png">
-                    <img src="../img/hobby2-400.png" alt="A violin resting vertically on the side of a piano.">
-                </picture>
-                <p>Another of my favorite hobbies is to learn new skills. There is something about acquiring new
-                    abilities that makes me feel accomplished. For now, my plan is to learn 3 new languages and then
-                    be able to play an instrument (between piano and violin).</p>
-            </article>
+                        <img src="../img/hobby2-400.png" alt="A violin resting vertically on the side of a piano.">
+                    </picture>
+                    <div class="details">
+                        <h3>Learn New Skills</h3>
+                        <p>Another of my favorite hobbies is to learn new skills. There is something about
+                            acquiring new
+                            abilities that makes me feel accomplished. For now, my plan is to learn 3 new languages and
+                            then
+                            be able to play an instrument (between piano and violin).</p>
+                    </div>
+                </li>
 
-            <article>
-                <h3>Working Out</h3>
-                <picture>
-                    <source srcset="../img/hobby3-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
+                <li>
 
-                    <source srcset="../img/hobby3-400.png 400w,
+                    <picture>
+                        <source srcset="../img/hobby3-400.png 400w" sizes="(max-width: 400px) 100vw" type="image/png">
+
+                        <source srcset="../img/hobby3-400.png 400w,
                         ../img/hobby3-800.png 800w,
                         ../img/hobby3-1200.png 1200w
                       " sizes="(max-width: 400px) 400px,
                                (max-width: 800px) 800px,
                                1200px
                       " type="image/png">
-                    <img src="../img/hobby3-400.png" alt="A gym equipped with dumbells, a bench, and a bar.">
-                </picture>
-                <p>Lastly, I like working out. Right now, I am working towards the one-arm pushup. I would usually
-                    just stick with body-weight excerises. My favorite type of excerise are push
-                    excerise, e.g. push-ups and dips. Recently, I have started going to the gym. </p>
-            </article>
+                        <img src="../img/hobby3-400.png" alt="A gym equipped with dumbells, a bench, and a bar.">
+                    </picture>
+                    <div class="details">
+                        <h3>Working Out</h3>
+                        <p>I like working out and right now, I am working towards the one-arm pushup. I
+                            would usually
+                            just stick with body-weight excerises. My favorite type of excerise are push
+                            excerise, e.g. push-ups. </p>
+                    </div>
+                </li>
 
-            <article>
-                <h3>Stay tuned for further updates!</h3>
-            </article>
         </section>
     </main>
 
@@ -253,6 +283,17 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById('toggle-view').addEventListener('click', () => {
+            document.querySelectorAll('.hobbies li img').forEach((anchor, index) => {
+                anchor.style.viewTransitionName = `hobby-${index}`;
+            })
+
+            document.startViewTransition(() => {
+                document.querySelector('.hobbies').classList.toggle('column');
+            })
+        })
+    </script>
     <noscript>To toggle the themes, JavaScript must be activated.</noscript>
 </body>
 

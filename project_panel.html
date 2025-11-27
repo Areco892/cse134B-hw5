@@ -198,7 +198,7 @@
         /**
          * Attach event listener to the buttons on project panel 
          */
-        createBtn.addEventListener('click', addProject)
+        createBtn.addEventListener('click', clearForm)
         saveBtn.addEventListener('click', projectCreateUpdate)
 
         /**
@@ -214,8 +214,10 @@
             };
             if (projectID.value !== "") {
                 updateProject(projectID.value, project);
+                clearForm();
             } else {
                 createProject(project);
+                clearForm();
             }
         };
 
@@ -272,9 +274,7 @@
         /**
          * Clear the form and register the user's input to create a new project card 
          */
-        function addProject() {
-            const localProjects = JSON.parse(localStorage.getItem("projects"));
-
+        function clearForm() {
             form.title.value = "";
             form.src.value = "";
             form.alt.value = "";

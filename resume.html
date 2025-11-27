@@ -41,17 +41,19 @@
                 }
             }
 
-            button {
+            a {
                 font-size: clamp(1.5rem, 100%, 2rem);
                 cursor: pointer;
-                width: 8rem;
                 border: var(--border);
                 border-radius: var(--border-radius);
                 margin: 1rem;
                 align-self: center;
+                padding: 0 1rem;
+                text-decoration: none;
+                color: var(--text-color);
             }
 
-            button:hover {
+            a:hover {
                 background: color-mix(in srgb, rgb(255, 53, 53), white 50%);
             }
 
@@ -117,7 +119,7 @@
             <img id="theme-image" src="img/resume-lightmode.png"
                 alt="Alexander's resume page with a description, education section, project section, and technical skill section.">
         </picture>
-        <button>Download</button><br>
+        <a href="resume.pdf" download>Download</a>
     </main>
 
     <script src="script.js"></script>
