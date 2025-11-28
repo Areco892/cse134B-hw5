@@ -15,19 +15,6 @@
             align-items: center;
             gap: 2rem;
 
-            h2 {
-                font-size: var(--h2-font-size);
-            }
-
-            h3 {
-                font-size: var(--h3-font-size);
-                text-align: center;
-            }
-
-            p {
-                font-size: var(--p-font-size);
-            }
-
             .socials {
                 display: flex;
                 flex-direction: column;
@@ -39,8 +26,6 @@
                 border-radius: var(--border-radius);
                 width: clamp(35rem, 100%, 45rem);
 
-
-
                 button-group {
                     display: flex;
                     gap: 2rem;
@@ -50,7 +35,7 @@
                 a {
                     padding: 0.5rem;
                     transition: transform;
-                    font-size: 1.5rem;
+                    font-size: var(--p-font-size);
                     background-color: var(--bg-color);
                     color: var(--text-color);
                     border: var(--border);
@@ -74,6 +59,11 @@
                 flex-direction: column;
                 padding: 2rem;
                 gap: 0.5rem;
+                font-size: var(--p-font-size);
+
+                label {
+                    text-align: start;
+                }
 
                 input,
                 textarea {
@@ -81,12 +71,12 @@
                     border-radius: var(--border-radius);
                     padding: 0.5rem;
                     color: var(--text-color);
+                    font-size: var(--p-font-size);
                 }
 
                 input:placeholder-shown,
                 textarea:placeholder-shown {
                     background-color: var(--bg-color);
-
                     border-left: 4px solid #0883ff;
                     border-right: 4px solid #0883ff;
                     border-radius: var(--border-radius);
@@ -148,7 +138,6 @@
                     flex-direction: column;
                     min-height: 1.2rem;
                     color: #b00020;
-                    font-size: 1rem;
                     transition: opacity 0.3s ease;
                     opacity: 1;
                 }
@@ -161,20 +150,8 @@
                     display: flex;
                     flex-direction: column;
                     min-height: 1.2rem;
-                    font-size: 1rem;
                     transition: opacity 0.3s ease;
                     opacity: 1;
-                }
-
-                button {
-                    width: clamp(5rem, 5vw, 5rem);
-                    align-self: flex-end;
-                    font-size: clamp(1rem, 3vw, 1rem);
-                    border: var(--border);
-                    border-radius: var(--border-radius);
-                    background-color: var(--bg-color);
-                    color: var(--color);
-                    cursor: pointer;
                 }
 
             }

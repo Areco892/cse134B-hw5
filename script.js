@@ -71,15 +71,16 @@ class ProjectCard extends HTMLElement {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
-                gap: 1rem;
                 border: var(--border);
                 border-radius: var(--border-radius);
                 width: clamp(40rem, 50vw, 50rem);
                 justify-content: center;
+                align-items: center;
             } 
                 
-            h2 {
-                font-size: 2rem;
+            h3 {
+                font-size: var(--h3-font-size);
+                margin: 1rem;
                 width: 100%;
             }
 
@@ -100,7 +101,7 @@ class ProjectCard extends HTMLElement {
             p {
                 font-size: var(--p-font-size);
                 width: 100%;
-                padding: 0 1rem;
+                padding: 0 2rem;
             }
 
             a {
@@ -108,12 +109,13 @@ class ProjectCard extends HTMLElement {
                 border-radius: var(--border-radius);
                 background-color: var(--bg-color);
                 color: var(--text-color);
+                font-size: var(--p-font-size);
                 padding: 1rem;
                 text-decoration: none;
                 margin-bottom: 1rem;
             }
         </style>
-        <h2>${this.getAttribute("title")}</h2>
+        <h3>${this.getAttribute("title")}</h3>
         <picture>
             <img src="${this.getAttribute("src")}" alt="${this.getAttribute("alt")}">
         </picture>

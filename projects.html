@@ -13,23 +13,6 @@
             display: flex;
             flex-direction: column;
 
-            h2 {
-                font-size: 3rem;
-            }
-
-            button {
-                text-decoration: none;
-                border: var(--border);
-                border-radius: var(--border-radius);
-                background-color: var(--bg-color);
-                color: var(--text-color);
-                font-size: var(--p-font-size);
-                font-family: var(--text-font);
-                margin: 1rem 0;
-                padding: 1rem;
-                cursor: pointer;
-            }
-
             projects-preview {
                 display: flex;
                 flex-direction: row;
@@ -177,7 +160,7 @@
             const projectsPreview = document.getElementById('projectsPreview')
             const projectsContainer = document.getElementById('projectsContainer');
             projectsPreview.innerHTML = '';
-            projectsContainer.innerHTML = 'Click on a project to display!';
+            projectsContainer.innerHTML = '<p>Click on a project to display!</p>';
 
             data.forEach(project => {
                 const a = document.createElement('a');
